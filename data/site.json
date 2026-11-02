@@ -1,0 +1,95 @@
+{
+  "name": "Lidiana Houro",
+  "short": "Lidiana",
+  "brand": "lidiana",
+  "initials": "LH",
+  "url": "https://lidiana.vercel.app",
+  "role": "Data Engineer",
+  "roleLine": "Data Engineering · Data Warehousing · Business Intelligence",
+  "headline": "Data Engineer | SQL, Python, ETL/ELT, Data Warehousing, Power BI | 9+ years in information systems, data warehousing and BI",
+  "description": "Lidiana Houro: Data Engineer with 9+ years across information systems, data warehousing and business intelligence. ETL pipelines in SQL Server and Python, star schemas and Power BI.",
+  "location": "Istanbul, Türkiye",
+  "availability": "Open to remote collaboration",
+  "tagline": "Structured data. Steady decisions.",
+  "footerNote": "Built to answer the next question.",
+  "themeColor": "#5C2E3E",
+  "github": "lidianarhoro88",
+  "linkedin": "https://www.linkedin.com/in/lidiana-houro/",
+  "email": "lidiana.h.data@gmail.com",
+  "snapshot": "2026-11-02",
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Work",
+      "href": "/work/"
+    },
+    {
+      "label": "Dashboards",
+      "href": "/dashboards/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    }
+  ],
+  "more": [
+    {
+      "label": "Résumé",
+      "href": "/resume/"
+    },
+    {
+      "label": "For hiring teams",
+      "href": "/recruiters/"
+    },
+    {
+      "label": "Field notes",
+      "href": "/learn/"
+    },
+    {
+      "label": "Learning log",
+      "href": "/learning/"
+    },
+    {
+      "label": "Writing & posts",
+      "href": "/posts/"
+    },
+    {
+      "label": "Work with me",
+      "href": "/services/"
+    },
+    {
+      "label": "Community",
+      "href": "/community/"
+    },
+    {
+      "label": "Credentials",
+      "href": "/credentials/"
+    }
+  ],
+  "categories": [
+    {
+      "id": "engineering",
+      "label": "Data engineering"
+    },
+    {
+      "id": "bi",
+      "label": "BI & analytics"
+    },
+    {
+      "id": "learning",
+      "label": "Learning & resources"
+    }
+  ],
+  "toolkit": [
+    "SQL Server",
+    "Python",
+    "PostgreSQL",
+    "Power BI",
+    "SQL",
+    "SAP",
+    "Excel"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "lidiana-portfolio",
+  "version": "1.0.0",
+  "description": "Lidiana Houro — data engineering and BI portfolio",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "dev": "node src/build.mjs && npx serve dist",
+    "og": "node src/og.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.35.5",
+    "simple-icons": "^13.21.0"
+  },
+  "private": true,
+  "type": "module"
+}

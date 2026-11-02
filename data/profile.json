@@ -1,0 +1,330 @@
+{
+  "aboutIntro": "From office workflows to warehouses and dashboards, my work is connected by one habit: make the data agree before anyone makes a decision with it.",
+  "aboutBody": [
+    "I’m a data engineer with more than nine years across information systems, data warehousing and business intelligence, mostly in pharmaceutical distribution and construction in Istanbul.",
+    "I build ETL pipelines in SQL Server and Python, model data into star schemas, and deliver Power BI dashboards that management uses to track KPIs. I care about the unglamorous parts too: access control, backups, data quality and queries that stay fast.",
+    "I studied Computer Systems Engineering at Cordoba Private University. My first roles were in information coordination, and moving from filing systems to databases taught me that most data problems start as process problems.",
+    "Alongside my full-time work I run RD Group, a small digital-solutions business building websites, SEO and branding for international clients. My next step is going deeper into data engineering and AI, with a European master’s degree as the milestone."
+  ],
+  "focusTitle": "Current focus",
+  "focus": "Medallion pipelines (Raw, Silver, Gold), dimensional modelling, and moving from Power BI reporting toward Microsoft Fabric data engineering.",
+  "languages": [
+    "Arabic (native)",
+    "English (professional)"
+  ],
+  "experience": [
+    {
+      "role": "Data & Information Systems Engineer",
+      "org": "MTE Group",
+      "dates": "Jan 2022 – Present",
+      "place": "Istanbul, Türkiye",
+      "points": [
+        "Led the move from legacy office administration workflows to digital information systems, improving data entry efficiency and accuracy across departments.",
+        "Designed and maintain end-to-end ETL pipelines in SQL Server and Python that aggregate operational and financial data from several business units.",
+        "Implemented a Medallion data-cleaning framework (Raw, Silver, Gold) to validate schemas, remove redundancy and protect data quality.",
+        "Built Power BI dashboards with advanced DAX that give the executive team live KPI and operational insight.",
+        "Manage database access control and data governance, with optimised SQL for secure, low-latency internal reporting."
+      ]
+    },
+    {
+      "role": "Founder & Managing Director",
+      "org": "RD Group (self-employed)",
+      "dates": "May 2020 – Present",
+      "place": "Istanbul, Türkiye",
+      "points": [
+        "Run a small digital-solutions business delivering WordPress web design and development, SEO and branding for international clients."
+      ]
+    },
+    {
+      "role": "Project & Data Management Specialist",
+      "org": "Alka Pharma Ecza Deposu",
+      "dates": "Nov 2019 – Nov 2021",
+      "place": "Istanbul, Türkiye",
+      "points": [
+        "Coordinated cross-functional IT and administrative projects, aligning business requirements with information-system deliverables.",
+        "Modelled star schemas with fact and dimension tables to centralise supply chain, procurement and CRM data.",
+        "Produced weekly and monthly performance reports in advanced Excel (PivotTables, Power Query) to surface operational bottlenecks."
+      ]
+    },
+    {
+      "role": "Data Warehouse & Database Analyst",
+      "org": "Alibaba Ecza Deposu Dış Ticaret A.Ş.",
+      "dates": "Oct 2017 – Oct 2019",
+      "place": "Istanbul, Türkiye",
+      "points": [
+        "Translated pharmaceutical business requirements into relational database models, improving data retrieval efficiency by 30%.",
+        "Defined data administration rules, recovery procedures and backup policies, increasing database reliability and availability by 25%.",
+        "Wrote optimised SQL queries, stored procedures and scripts to automate data cleansing and speed up reporting."
+      ]
+    },
+    {
+      "role": "Information & Administrative Coordinator",
+      "org": "Enisler Group",
+      "dates": "Sep 2016 – Sep 2017",
+      "place": "Istanbul, Türkiye",
+      "points": [
+        "Supported senior executives with market research and data-driven summaries.",
+        "Designed digital filing systems for consistent information flow across teams.",
+        "Standardised presentation materials, invoices and performance tracking."
+      ]
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Technology (BTech), Computer Systems Engineering",
+    "school": "Cordoba Private University (formerly Mamoun Private University)",
+    "year": "2005 – 2016",
+    "note": "Systems, databases and software foundations that later became the base for data engineering work."
+  },
+  "credentials": [
+    {
+      "title": "SAP Certified Application Associate: Business Foundation & Integration with SAP ERP 6.07",
+      "issuer": "SAP",
+      "date": "Sep 2025",
+      "area": "Systems & ERP",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "Business Process Modeling and Analysis",
+      "issuer": "SAP",
+      "date": "Dec 2025",
+      "area": "Business analysis",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "SAP Requirements Gathering and Documentation",
+      "issuer": "SAP",
+      "date": "Nov 2025",
+      "area": "Business analysis",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "Data Modeling in Power BI",
+      "issuer": "Microsoft",
+      "date": "Jul 2026",
+      "area": "Business intelligence",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "SQL Foundations",
+      "issuer": "Microsoft",
+      "date": "Jul 2026",
+      "area": "Databases",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "Data Analysis and Visualization with Power BI",
+      "issuer": "Microsoft",
+      "date": "Jun 2026",
+      "area": "Business intelligence",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "Analyzing and Visualizing Data with Microsoft Power BI",
+      "issuer": "Microsoft",
+      "date": "Jul 2025",
+      "area": "Business intelligence",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "Project Management Essentials",
+      "issuer": "IBM · Coursera",
+      "date": "Dec 2025",
+      "area": "Project management",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "Data Analytics Job Simulation",
+      "issuer": "Deloitte Australia · Forage",
+      "date": "Jul 2026",
+      "area": "Analytics",
+      "status": "Earned",
+      "url": ""
+    },
+    {
+      "title": "Google Analytics for Business",
+      "issuer": "Google",
+      "date": "Apr 2020",
+      "area": "Analytics",
+      "status": "Earned",
+      "url": ""
+    }
+  ],
+  "learning": [
+    {
+      "id": "fabric",
+      "title": "Microsoft Fabric Data Engineer (DP-700)",
+      "provider": "Microsoft",
+      "status": "Planned",
+      "tags": [
+        "Fabric",
+        "Lakehouse",
+        "Pipelines"
+      ],
+      "related": "coffee-shop-data-warehouse"
+    },
+    {
+      "id": "coursera-de",
+      "title": "Microsoft Data Engineering track",
+      "provider": "Coursera",
+      "status": "In progress",
+      "tags": [
+        "Azure",
+        "ETL",
+        "Data modelling"
+      ],
+      "related": "retail-etl-pipeline"
+    },
+    {
+      "id": "tuwaiq",
+      "title": "SQL, Python and Power BI",
+      "provider": "Tuwaiq Academy",
+      "status": "In progress",
+      "tags": [
+        "SQL",
+        "Python",
+        "Power BI"
+      ],
+      "related": "logistics-analytics-sql-powerbi"
+    },
+    {
+      "id": "excel-pbi",
+      "title": "Excel, Power Query, DAX and Power BI basics",
+      "provider": "Online course",
+      "status": "In progress",
+      "tags": [
+        "Excel",
+        "Power Query",
+        "DAX"
+      ],
+      "related": "global-health-indicators-powerbi"
+    },
+    {
+      "id": "baraa",
+      "title": "SQL Data Warehouse project",
+      "provider": "Data With Baraa",
+      "status": "In progress",
+      "tags": [
+        "SQL",
+        "Warehouse",
+        "Medallion"
+      ],
+      "related": "sql-data-warehouse-course-project"
+    },
+    {
+      "id": "pte",
+      "title": "PTE Core (English)",
+      "provider": "Pearson",
+      "status": "In progress",
+      "tags": [
+        "English"
+      ],
+      "related": ""
+    }
+  ],
+  "posts": [
+    {
+      "id": "sales-dashboard",
+      "topic": "Dashboards",
+      "title": "One page for executives: revenue, profit and margin",
+      "summary": "Sharing a single-file HTML dashboard built with Chart.js from a 500-order retail dataset, and why portability mattered.",
+      "url": "",
+      "project": "sales-profit-executive-dashboard",
+      "date": "2026"
+    },
+    {
+      "id": "coffee-dwh",
+      "topic": "Data warehousing",
+      "title": "Bronze, Silver, Gold: building a coffee shop warehouse",
+      "summary": "What each layer is responsible for, and why the dashboard should only ever read from Gold.",
+      "url": "",
+      "project": "coffee-shop-data-warehouse",
+      "date": "2026"
+    }
+  ],
+  "services": [
+    {
+      "title": "BI & reporting",
+      "line": "A clearer view of the business.",
+      "points": [
+        "Power BI dashboards and KPI definitions",
+        "Data models your team can extend",
+        "Documented measures and refresh logic"
+      ]
+    },
+    {
+      "title": "Data warehousing & ETL",
+      "line": "A foundation you can rebuild.",
+      "points": [
+        "Layered warehouse design (Bronze, Silver, Gold)",
+        "SQL and Python transformations",
+        "Data quality checks before reporting"
+      ]
+    },
+    {
+      "title": "Systems & database care",
+      "line": "Process first, then the data.",
+      "points": [
+        "Requirements gathering and process modelling",
+        "Access control, backup and recovery",
+        "Query optimisation for internal reporting"
+      ]
+    }
+  ],
+  "community": [
+    {
+      "title": "Learning in public",
+      "line": "Sharing projects, dashboards and lessons on LinkedIn and GitHub as I build them."
+    },
+    {
+      "title": "Arabic-speaking data learners",
+      "line": "Explaining warehouse and BI concepts in Arabic for people starting their data path."
+    },
+    {
+      "title": "Istanbul data community",
+      "line": "Connecting with analysts and engineers working across Turkish industry."
+    }
+  ],
+  "notes": [
+    {
+      "title": "Excel analysis formulas",
+      "line": "SUMIFS, AVERAGEIFS, COUNTIFS and INDEX/MATCH on real sales tables.",
+      "tags": [
+        "Excel"
+      ],
+      "status": "Drafting"
+    },
+    {
+      "title": "Database and SQL fundamentals",
+      "line": "From data awareness to keys, joins and the first useful query.",
+      "tags": [
+        "SQL"
+      ],
+      "status": "Drafting"
+    },
+    {
+      "title": "Warehouse layers, explained",
+      "line": "Bronze, Silver and Gold with one small example you can follow.",
+      "tags": [
+        "Data warehousing"
+      ],
+      "status": "Drafting"
+    },
+    {
+      "title": "Cleaning public datasets",
+      "line": "Removing aggregate rows and deciding what a null really means.",
+      "tags": [
+        "Python",
+        "Power BI"
+      ],
+      "status": "Drafting"
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+[
+  {
+    "slug": "coffee-shop-data-warehouse",
+    "title": "Coffee Shop Chain Data Warehouse",
+    "eyebrow": "Data warehousing / Medallion layers",
+    "category": "engineering",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": true,
+    "repo": "https://github.com/lidianarhoro88/coffee-shop-data-warehouse",
+    "summary": "A data warehouse built from scratch for a coffee chain on PostgreSQL: raw, messy data through Bronze, Silver and Gold layers to an interactive Power BI dashboard for decision-making.",
+    "tools": [
+      "PostgreSQL",
+      "SQL",
+      "Power BI",
+      "DAX"
+    ],
+    "visual": {
+      "type": "architecture",
+      "steps": [
+        "Raw sales files",
+        "Bronze",
+        "Silver",
+        "Gold star schema",
+        "Power BI"
+      ]
+    },
+    "question": "A chain with several branches records sales, products and staff in separate files. Before anyone can compare branches, the data has to agree on what a sale, a product and a day actually are.",
+    "approach": [
+      "Land the raw files untouched in a Bronze schema so every later change can be traced back.",
+      "Clean types, trim text, remove duplicates and standardise categories in Silver.",
+      "Model a Gold star schema with conformed dimensions and a sales fact at line-item grain.",
+      "Build the Power BI report on Gold only, so every visual reads from tested tables."
+    ],
+    "result": "A layered warehouse you can rebuild from scratch, with each transformation step in its own SQL script and a dashboard that reads from the curated layer.",
+    "scope": "The dataset is a practice scenario designed for this project. Figures describe the scenario, not a real company.",
+    "pages": [
+      "Sales overview",
+      "Branch comparison",
+      "Product performance"
+    ],
+    "files": []
+  },
+  {
+    "slug": "sales-profit-executive-dashboard",
+    "title": "Sales & Profit Executive Dashboard",
+    "eyebrow": "Executive reporting / Interactive HTML",
+    "category": "bi",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": true,
+    "repo": "https://github.com/lidianarhoro88/sales-profit-executive-dashboard",
+    "summary": "A single-file interactive dashboard from 500 order-level transactions over two years: 7 KPIs that recalculate with every filter, 7 charts, 8 filters and a key-insights panel computed live.",
+    "tools": [
+      "JavaScript",
+      "Chart.js",
+      "HTML",
+      "CSS"
+    ],
+    "visual": {
+      "type": "dashboard",
+      "steps": [
+        "7 KPIs",
+        "7 charts",
+        "8 filters",
+        "Insights"
+      ]
+    },
+    "question": "Executives need one page that answers where revenue comes from and where profit leaks, without opening a BI tool.",
+    "approach": [
+      "Profile the 500-order dataset and fix the fields that drive revenue and profit.",
+      "Define each KPI once, so revenue, profit and margin are computed the same way everywhere.",
+      "Build a single HTML file with Chart.js so the report opens anywhere with no install.",
+      "Add filters so a reader can move from the total down to a category in two clicks."
+    ],
+    "result": "7 KPIs, 7 charts and 8 filters in one portable HTML file, with an insights panel that rewrites itself as filters change. Shared publicly on LinkedIn.",
+    "scope": "Built on a 500-order retail practice dataset.",
+    "pages": [
+      "KPI summary",
+      "Revenue & profit trend",
+      "Category breakdown"
+    ],
+    "files": []
+  },
+  {
+    "slug": "logistics-analytics-sql-powerbi",
+    "title": "Logistics Performance Analytics",
+    "eyebrow": "Logistics / End-to-end analysis",
+    "category": "bi",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": true,
+    "repo": "https://github.com/lidianarhoro88/logistics-analytics-sql-powerbi",
+    "summary": "A layered SQL Server pipeline (raw, clean, mart) on deliberately messy data for a fictional Turkish delivery company, with a 3-page Power BI dashboard that traced most delays to four drivers rather than specific cities.",
+    "tools": [
+      "SQL Server",
+      "SQL",
+      "Power BI",
+      "DAX"
+    ],
+    "visual": {
+      "type": "architecture",
+      "steps": [
+        "Messy raw data",
+        "Clean layer",
+        "Star schema mart",
+        "Date dimension",
+        "Power BI"
+      ]
+    },
+    "question": "Deliveries are late. Is it the cities, the routes or the people? The raw data can’t answer yet: city names are spelled five ways, dates come in mixed formats and some shipments point to drivers who don’t exist.",
+    "approach": [
+      "Load the messy source as-is into a raw layer.",
+      "Standardise inconsistent city names and date formats, and remove duplicates in the clean layer.",
+      "Add “Unknown” members for orphan keys so no shipment silently disappears from totals.",
+      "Model a mart with a star schema and a date dimension, then build a 3-page Power BI dashboard with DAX measures."
+    ],
+    "result": "66% of shipments arrived on time, and four drivers, not specific cities, caused most of the delays. That moves the conversation from route planning to driver support.",
+    "scope": "All records are synthetic, created for a fictional Turkish delivery company. The messiness is deliberate.",
+    "pages": [
+      "On-time overview",
+      "Drivers & delays",
+      "Cities & routes"
+    ],
+    "files": []
+  },
+  {
+    "slug": "global-health-indicators-powerbi",
+    "title": "Global Health Indicators Report",
+    "eyebrow": "Public data / Power BI",
+    "category": "bi",
+    "status": "done",
+    "kind": "original",
+    "featured": false,
+    "caseStudy": false,
+    "dashboard": true,
+    "repo": "",
+    "summary": "A Power BI report on a Global Health Indicators dataset, with Python cleaning that removes World Bank aggregate rows and handles nulls before modelling.",
+    "tools": [
+      "Power BI",
+      "Python",
+      "DAX",
+      "Power Query"
+    ],
+    "visual": {
+      "type": "dashboard",
+      "steps": [
+        "Countries",
+        "Indicators",
+        "Trends",
+        "Regions"
+      ]
+    },
+    "question": "Public datasets mix countries with regional aggregates. Counting both twice quietly distorts every average.",
+    "approach": [
+      "Remove World Bank aggregate rows in Python so only real countries remain.",
+      "Decide how to treat each kind of null instead of dropping rows blindly.",
+      "Write DAX measures for the indicators the report needs.",
+      "Plan the work in a four-phase roadmap from cleaning to presentation."
+    ],
+    "result": "A cleaner country-level dataset and a report organised around indicators and trends.",
+    "scope": "Uses public indicator data. The repository link will be added once published.",
+    "pages": [
+      "Indicator overview",
+      "Country trends"
+    ],
+    "files": []
+  },
+  {
+    "slug": "retail-etl-pipeline",
+    "title": "Retail ETL Pipeline",
+    "eyebrow": "Python / SQL pipeline",
+    "category": "engineering",
+    "status": "progress",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": false,
+    "dashboard": false,
+    "repo": "",
+    "summary": "A Python and SQL pipeline that extracts retail files, validates and transforms them, and loads them into a relational model ready for reporting.",
+    "tools": [
+      "Python",
+      "SQL",
+      "PostgreSQL",
+      "Pandas"
+    ],
+    "visual": {
+      "type": "workflow",
+      "steps": [
+        "Extract files",
+        "Validate",
+        "Transform",
+        "Load"
+      ]
+    },
+    "question": "Retail exports arrive with inconsistent formats. A repeatable pipeline beats cleaning the same file by hand every week.",
+    "approach": [
+      "Extract source files with Python.",
+      "Validate keys, types and required fields before anything is loaded.",
+      "Transform into consistent tables.",
+      "Load into the database with a run that can be repeated safely."
+    ],
+    "result": "In progress. Being prepared as a GitHub-ready portfolio project.",
+    "scope": "Built locally in Python and SQL.",
+    "pages": [],
+    "files": []
+  },
+  {
+    "slug": "price-intelligence-pipeline",
+    "title": "Price Intelligence Pipeline",
+    "eyebrow": "Python / Data collection",
+    "category": "engineering",
+    "status": "progress",
+    "kind": "original",
+    "featured": false,
+    "caseStudy": false,
+    "dashboard": false,
+    "repo": "",
+    "summary": "A pipeline that collects product prices, standardises them and stores a history that makes price movement easy to compare over time.",
+    "tools": [
+      "Python",
+      "SQL",
+      "Pandas"
+    ],
+    "visual": {
+      "type": "workflow",
+      "steps": [
+        "Collect prices",
+        "Standardise",
+        "Store history",
+        "Compare"
+      ]
+    },
+    "question": "A single price is a number. A price history is a signal.",
+    "approach": [
+      "Collect prices on a schedule.",
+      "Standardise products and currencies.",
+      "Keep each observation with its date so history is never overwritten.",
+      "Prepare comparison tables for analysis."
+    ],
+    "result": "In progress. Being prepared as a GitHub-ready portfolio project.",
+    "scope": "Built locally in Python and SQL.",
+    "pages": [],
+    "files": []
+  },
+  {
+    "slug": "sql-data-warehouse-course-project",
+    "title": "SQL Data Warehouse (Course Project)",
+    "eyebrow": "Guided practice / Credited",
+    "category": "learning",
+    "status": "progress",
+    "kind": "course",
+    "featured": false,
+    "caseStudy": false,
+    "dashboard": false,
+    "repo": "",
+    "credit": "Course project by Data With Baraa. Built as practice; the original design belongs to the course author.",
+    "summary": "A guided SQL data warehouse build following the Data With Baraa course, used to practise layered warehouse design end to end.",
+    "tools": [
+      "SQL",
+      "SQL Server"
+    ],
+    "visual": {
+      "type": "source",
+      "steps": [
+        "README.md",
+        "scripts/bronze",
+        "scripts/silver",
+        "scripts/gold"
+      ]
+    },
+    "question": "Following an experienced engineer's full build is a fast way to learn the order of decisions in a warehouse project.",
+    "approach": [
+      "Follow the course build from source systems to the final layer.",
+      "Rewrite each step in my own words in the documentation.",
+      "Compare the approach with my own coffee shop warehouse."
+    ],
+    "result": "In progress. Shared with clear credit to the course author.",
+    "scope": "Learning project. Not presented as original design.",
+    "pages": [],
+    "files": []
+  }
+]
