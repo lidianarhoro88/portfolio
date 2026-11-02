@@ -49,6 +49,7 @@ const logo = t => {
 
 /* generated visual previews */
 const viz = (p, big = false) => {
+  if (p.image) return `<img src="${p.image}" alt="${esc(p.title)} preview" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left">`;
   const v = p.visual, s = v.steps;
   const head = (label) => `<div class="viz-head"><span class="dots"><i></i><i></i><i></i></span><span>${esc(label)}</span></div>`;
   if (v.type === 'architecture') return `<div class="viz">${head('Architecture / ' + p.slug)}<div class="viz-flow">${s.map((x, i) => `${i ? '<span class="viz-arrow">→</span>' : ''}<div class="viz-node${i === s.length - 1 ? ' hl' : /gold/i.test(x) ? ' gold' : ''}">${esc(x)}</div>`).join('')}</div><div class="viz-foot"><span>${esc(p.tools.slice(0, 3).join(' / '))}</span><span>Architecture overview</span></div></div>`;
@@ -57,7 +58,7 @@ const viz = (p, big = false) => {
     const h = [42, 66, 54, 80, 61, 92, 70, 85, 58, 76];
     return `<div class="viz">${head('Report / ' + p.slug)}<div class="viz-dash">${s.slice(0, 3).map(x => `<div class="viz-kpi"><small>${esc(x)}</small><i style="width:${50 + x.length * 4}%"></i></div>`).join('')}<div class="viz-chart">${h.map(x => `<i style="height:${x}%"></i>`).join('')}</div></div><div class="viz-foot"><span>${esc(p.tools.slice(0, 3).join(' / '))}</span><span>Report preview</span></div></div>`;
   }
-  return `<div class="viz">${head('repository / source')}<div class="viz-files">${s.map((x, i) => `<div class="viz-file"><span>0${i + 1}</span>${esc(x)}</div>`).join('')}</div><div class="viz-foot"><span>${esc(p.tools.join(' / '))}</span><span>Source preview ↗</span></div></div>`;
+  return `<div class="viz">${head('terminal / ' + p.slug)}<div class="viz-files">${s.map((x, i) => `<div class="viz-file"><span>0${i + 1}</span>${esc(x)}</div>`).join('')}</div><div class="viz-foot"><span>${esc(p.tools.slice(0, 3).join(' / '))}</span><span>Source preview ↗</span></div></div>`;
 };
 
 const card = p => `<article class="card reveal" data-search="${esc((p.title + ' ' + p.summary + ' ' + p.tools.join(' ') + ' ' + catLabel(p.category)).toLowerCase())}" data-kind="${p.kind}" data-status="${p.status}" data-category="${p.category}" data-title="${esc(p.title)}" data-case="${p.caseStudy ? 1 : 0}" data-order="${p.order}" data-repo="${esc(p.repo)}">
@@ -67,7 +68,7 @@ const card = p => `<article class="card reveal" data-search="${esc((p.title + ' 
     <h3><a href="/projects/${p.slug}/">${esc(p.title)}</a></h3>
     <p>${esc(p.summary)}</p>
     <div class="tags">${p.tools.slice(0, 4).map(t => `<span>${esc(t)}</span>`).join('')}</div>
-    <div class="card-links"><a href="/projects/${p.slug}/">${p.caseStudy ? 'Follow the story' : 'Explore project story'} ${ico('arrow')}</a>${p.repo ? `<a class="muted" href="${p.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}</div>
+    <div class="card-links"><a href="/projects/${p.slug}/">${p.caseStudy ? 'Follow the story' : 'Explore project story'} ${ico('arrow')}</a>${p.liveUrl ? `<a class="muted" href="${p.liveUrl}" target="_blank" rel="noopener">Live</a>` : ''}${p.repo ? `<a class="muted" href="${p.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}</div>
   </div>
 </article>`;
 
@@ -136,12 +137,13 @@ const T = t => `${t} | ${site.name}`;
 
 /* ---------- derived ---------- */
 const featured = [...projects.filter(p => p.featured), ...projects.filter(p => !p.featured && p.kind === 'original')].slice(0, 6);
-const building = projects.filter(p => p.status === 'progress' && p.kind === 'original');
+const building = projects.filter(p => p.status === 'progress');
 const dashboards = projects.filter(p => p.dashboard);
 const originals = projects.filter(p => p.kind === 'original');
 const caseStudies = projects.filter(p => p.caseStudy);
 const inProgressCourses = profile.learning.filter(l => l.status === 'In progress');
 const toolsAll = [...new Set(projects.flatMap(p => p.tools))];
+const liveBtn = (p, primary = false) => p.liveUrl ? `<a class="btn${primary ? ' btn-primary' : ''}" href="${p.liveUrl}" target="_blank" rel="noopener">${esc(p.liveLabel || 'Live demo')} ${ico('external')}</a>` : '';
 const sourceBtn = p => p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Source on GitHub ${ico('external')}</a>` : `<span class="btn" aria-disabled="true" style="opacity:.6;cursor:default">Repository coming soon</span>`;
 
 /* ---------- HOME ---------- */
@@ -282,7 +284,7 @@ projects.forEach(p => {
   <a class="back" href="/work/">${ico('back')} All work</a>
   <div class="eyebrow"><b>${esc(p.eyebrow)}</b>${p.status === 'progress' ? '<span class="tag">In progress</span>' : ''}${p.kind === 'course' ? '<span class="tag">Course project</span>' : ''}</div>
   <h1>${esc(p.title)}</h1><p class="lede">${esc(p.summary)}</p>
-  <div class="btns" style="margin-top:28px"><a class="btn btn-primary" href="#project-story">Follow the project story ${ico('arrow')}</a>${sourceBtn(p)}${p.dashboard ? `<a class="btn" href="/dashboards/${p.slug}/">Report preview</a>` : ''}<button class="btn copy-btn" type="button" data-copy>${ico('copy')}<span class="label">Copy page link</span></button></div>
+  <div class="btns" style="margin-top:28px"><a class="btn btn-primary" href="#project-story">Follow the project story ${ico('arrow')}</a>${liveBtn(p)}${sourceBtn(p)}${p.dashboard ? `<a class="btn" href="/dashboards/${p.slug}/">Report preview</a>` : ''}<button class="btn copy-btn" type="button" data-copy>${ico('copy')}<span class="label">Copy page link</span></button></div>
 </div></section>
 <section id="project-story"><div class="wrap">
   <div class="eyebrow"><b>The project</b> / Follow the thread</div><h2>A question. A process. <em>Work you can explore.</em></h2>
@@ -299,7 +301,7 @@ projects.forEach(p => {
 
   <div class="story" id="story-result"><div><div class="eyebrow">03 / Open the work</div><h3>See the work. Inspect the details.</h3><p>${esc(p.result)}</p>
     <div class="preview-lg">${viz(p, true)}</div><p class="caption">${esc(p.visual.steps.join(' → '))}</p></div>
-    <div class="facts">${p.dashboard ? `<a class="btn" href="/dashboards/${p.slug}/">Explore report preview ${ico('arrow')}</a>` : ''}${p.repo ? `<a class="btn" href="${p.repo}#readme" target="_blank" rel="noopener">Read the documentation ${ico('external')}</a><a class="btn" href="${p.repo}" target="_blank" rel="noopener">View the original source ${ico('external')}</a>` : '<p class="muted">The repository will be linked here once it is published.</p>'}</div></div>
+    <div class="facts">${liveBtn(p)}${p.dashboard ? `<a class="btn" href="/dashboards/${p.slug}/">Explore report preview ${ico('arrow')}</a>` : ''}${p.repo ? `<a class="btn" href="${p.repo}#readme" target="_blank" rel="noopener">Read the documentation ${ico('external')}</a><a class="btn" href="${p.repo}" target="_blank" rel="noopener">View the original source ${ico('external')}</a>` : '<p class="muted">The repository will be linked here once it is published.</p>'}</div></div>
 
   <div class="story" id="story-evidence"><div><div class="eyebrow">04 / The work behind the claim</div><h3>Choose where to look deeper.</h3>
     ${p.files.length ? `<div data-file-filter><label class="field" style="margin-bottom:12px">Find a source file<input type="search"></label><div class="chips" style="margin-bottom:14px">${['all', 'doc', 'code', 'report'].map((t, i) => `<button class="chip" type="button" data-type="${t}" aria-pressed="${i === 0}">${['All files', 'Documentation', 'Code & configuration', 'Reports & models'][i]}</button>`).join('')}</div></div><ul class="list-rows" style="list-style:none;padding:0">${p.files.map(f => `<li data-type="${f.type}" class="row"><a class="link" href="${p.repo}/blob/main/${f.path}" target="_blank" rel="noopener">${esc(f.path)}</a><small>${esc(f.type.toUpperCase())}</small></li>`).join('')}</ul>`
@@ -319,16 +321,16 @@ page('/dashboards/', { title: T('Dashboards & reports'), desc: `Power BI and int
 dashboards.forEach(p => {
   page(`/dashboards/${p.slug}/`, { title: T(`${p.title} report`), desc: p.summary, body: `
 <section class="proj-head"><div class="wrap"><a class="back" href="/dashboards/">${ico('back')} All dashboards</a><div class="eyebrow"><b>Interactive report</b> / ${esc(p.tools.join(' · '))}</div><h1>${esc(p.title)}</h1><p class="lede">${esc(p.summary)}</p>
-<div class="btns" style="margin-top:28px"><a class="btn btn-primary" href="/projects/${p.slug}/">Follow the project story ${ico('arrow')}</a>${sourceBtn(p)}</div></div></section>
+<div class="btns" style="margin-top:28px">${liveBtn(p, true)}<a class="btn${p.liveUrl ? '' : ' btn-primary'}" href="/projects/${p.slug}/">Follow the project story ${ico('arrow')}</a>${sourceBtn(p)}</div></div></section>
 <section class="section" style="padding-top:0"><div class="wrap story" style="border:0;padding-top:0"><div><div class="preview-lg">${viz({ ...p, visual: { type: 'dashboard', steps: p.pages.length ? p.pages : p.visual.steps } }, true)}</div><p class="caption">Report preview. Screenshots of the live report can be added to this page.</p></div>
 <div class="facts"><div class="eyebrow" style="margin:0">Report pages</div>${(p.pages.length ? p.pages : ['Overview']).map((x, i) => `<div class="fact"><small>Page 0${i + 1}</small><b>${esc(x)}</b></div>`).join('')}<div class="scope"><b>Context & scope</b>${esc(p.scope)}</div></div></div></section>` });
 });
 
 /* ---------- ABOUT ---------- */
 const lenses = [
-  { id: 'eng', label: 'Data engineering', title: 'A path from source files to a model people can trust.', q: 'What is the grain? Where can a record fail? Can every transformation be traced back to the raw file?', steps: [['Sources', 'Files, databases & ERP'], ['Bronze', 'Keep raw inputs as they arrived'], ['Silver', 'Clean keys, types & duplicates'], ['Gold', 'Facts, dimensions & grain'], ['Serve', 'A model reports can rely on']], rel: ['coffee-shop-data-warehouse', 'retail-etl-pipeline'] },
-  { id: 'bi', label: 'BI & analytics', title: 'From a business question to a page someone actually uses.', q: 'Who reads this? Which decision does it change? Is every measure defined once?', steps: [['Question', 'The decision behind the report'], ['Model', 'Star schema & relationships'], ['Measures', 'DAX defined once, reused'], ['Design', 'One page, one story'], ['Handover', 'Documented logic']], rel: ['sales-profit-executive-dashboard', 'logistics-analytics-sql-powerbi'] },
-  { id: 'sys', label: 'Systems & coordination', title: 'Most data problems start as process problems.', q: 'Which system owns this record? Who changes it, and when? What does the team need to see?', steps: [['Process', 'How work actually flows'], ['Systems', 'ERP and tools that hold the data'], ['Requirements', 'What each team needs'], ['Alignment', 'Shared definitions'], ['Delivery', 'Coordinated rollout']], rel: ['logistics-analytics-sql-powerbi', 'sales-profit-executive-dashboard'] }
+  { id: 'eng', label: 'Data engineering', title: 'A path from source files to a model people can trust.', q: 'What is the grain? Where can a record fail? Can every transformation be traced back to the raw file?', steps: [['Sources', 'Files, databases & ERP'], ['Bronze', 'Keep raw inputs as they arrived'], ['Silver', 'Clean keys, types & duplicates'], ['Gold', 'Facts, dimensions & grain'], ['Serve', 'A model reports can rely on']], rel: ['pharma-distribution-dbt', 'tcmb-fx-rates-pipeline'] },
+  { id: 'bi', label: 'BI & analytics', title: 'From a business question to a page someone actually uses.', q: 'Who reads this? Which decision does it change? Is every measure defined once?', steps: [['Question', 'The decision behind the report'], ['Model', 'Star schema & relationships'], ['Measures', 'DAX defined once, reused'], ['Design', 'One page, one story'], ['Handover', 'Documented logic']], rel: ['construction-cost-control', 'sales-profit-executive-dashboard'] },
+  { id: 'sys', label: 'Systems & coordination', title: 'Most data problems start as process problems.', q: 'Which system owns this record? Who changes it, and when? What does the team need to see?', steps: [['Process', 'How work actually flows'], ['Systems', 'ERP and tools that hold the data'], ['Requirements', 'What each team needs'], ['Alignment', 'Shared definitions'], ['Delivery', 'Coordinated rollout']], rel: ['invoice-intake-automation', 'logistics-analytics-sql-powerbi'] }
 ];
 const skillGroups = [
   ['Data engineering & warehousing', ['SQL', 'Python', 'Pandas', 'ETL / ELT', 'Medallion architecture', 'Star schema', 'Stored procedures', 'SQL Server', 'PostgreSQL', 'Data quality']],

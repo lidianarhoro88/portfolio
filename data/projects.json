@@ -1,5 +1,222 @@
 [
   {
+    "slug": "pharma-distribution-dbt",
+    "title": "Pharma Distribution Analytics · dbt + DuckDB",
+    "eyebrow": "Analytics engineering / dbt",
+    "category": "engineering",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": false,
+    "repo": "https://github.com/lidianarhoro88/pharma-distribution-dbt",
+    "liveUrl": "https://lidianarhoro88.github.io/pharma-distribution-dbt/",
+    "liveLabel": "dbt docs & lineage",
+    "summary": "Raw ERP extracts for a fictional Istanbul pharmaceutical wholesaler turned into a tested dbt star schema with an SCD Type 2 pharmacy dimension, OTIF delivery and expiry-loss marts. 54 nodes, 39 data tests, CI on every push.",
+    "tools": [
+      "dbt",
+      "DuckDB",
+      "SQL",
+      "Python"
+    ],
+    "visual": {
+      "type": "architecture",
+      "steps": [
+        "ERP extracts",
+        "Staging",
+        "SCD2 snapshot",
+        "Star schema",
+        "OTIF & expiry marts"
+      ]
+    },
+    "question": "Is the wholesaler delivering on time and in full, which warehouse is behind, and which products lose the most value to expired returns, while pharmacy master data keeps changing underneath?",
+    "approach": [
+      "Land six ERP extracts and read them directly with DuckDB external sources.",
+      "Clean in staging: 19 district spellings to 8, mixed-case codes, 44 duplicated order lines.",
+      "Track pharmacy changes with a dbt snapshot (SCD Type 2) and a surrogate key per version.",
+      "Model order-line and delivery facts at their own grain, then OTIF and expiry-risk marts.",
+      "Guard everything with generic, custom generic and singular tests that run in CI."
+    ],
+    "result": "On-time delivery 86.7 % and OTIF 77.3 %. The European-side warehouse is the problem (83.3 % on time against 89.9 %). The top 10 SKUs account for 44.9 % of the ₺290 K lost to expired stock.",
+    "scope": "All pharmacies, products and transactions are synthetic, generated to behave like a real ERP export.",
+    "pages": [],
+    "files": []
+  },
+  {
+    "slug": "construction-cost-control",
+    "title": "Construction Cost Control · Earned Value",
+    "eyebrow": "Project controls / EVM dashboard",
+    "category": "bi",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": true,
+    "repo": "https://github.com/lidianarhoro88/construction-cost-control",
+    "liveUrl": "https://lidianarhoro88.github.io/construction-cost-control/",
+    "liveLabel": "Live dashboard",
+    "summary": "Earned value management for six construction projects in Istanbul: a DuckDB model computing CPI, SPI, EAC and TCPI per work package, and a live dashboard with S-curves, a cost and schedule quadrant and change orders.",
+    "tools": [
+      "DuckDB",
+      "SQL",
+      "Python",
+      "Chart.js"
+    ],
+    "visual": {
+      "type": "dashboard",
+      "steps": [
+        "CPI",
+        "SPI",
+        "EAC",
+        "S-curve"
+      ]
+    },
+    "question": "A cost report says how much was spent. It does not say whether that spending bought the progress it should have. Which projects are over budget, which are late, and where will they land?",
+    "approach": [
+      "Model budget by WBS category, a planned S-curve, monthly progress, 740 invoices and change orders.",
+      "Compute PV, EV and AC per work package per month before rolling up, so a late package cannot hide behind an early one.",
+      "Derive CPI, SPI, EAC, VAC, TCPI and a health rule per project.",
+      "Publish an interactive dashboard on GitHub Pages and test the warehouse after every build."
+    ],
+    "result": "Portfolio CPI 0.98 and SPI 0.89, forecast ₺92 M over budget. The tower is a cost problem (steel package CPI 0.83); the hospital is a schedule problem (SPI 0.67, finishing 15 months late at this pace).",
+    "scope": "Six fictional projects with synthetic cost data. The problems modelled are typical of Istanbul building projects.",
+    "pages": [
+      "Portfolio health",
+      "S-curve per project",
+      "CPI × SPI quadrant",
+      "Cost variance by package",
+      "Change orders"
+    ],
+    "files": [],
+    "image": "/project-media/construction-cost-control.webp"
+  },
+  {
+    "slug": "tcmb-fx-rates-pipeline",
+    "title": "TCMB FX Rates Pipeline",
+    "eyebrow": "Data pipeline / Scheduled API ingestion",
+    "category": "engineering",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": true,
+    "repo": "https://github.com/lidianarhoro88/tcmb-fx-rates-pipeline",
+    "liveUrl": "https://lidianarhoro88.github.io/tcmb-fx-rates-pipeline/",
+    "liveLabel": "Live dashboard",
+    "summary": "An incremental, idempotent pipeline that loads the Central Bank of Türkiye's daily exchange-rate bulletin into DuckDB every business day on GitHub Actions, checks the data and publishes a live dashboard.",
+    "tools": [
+      "Python",
+      "DuckDB",
+      "GitHub Actions",
+      "Chart.js"
+    ],
+    "visual": {
+      "type": "workflow",
+      "steps": [
+        "Schedule 16:05",
+        "Watermark",
+        "Fetch & parse XML",
+        "Upsert + checks"
+      ]
+    },
+    "question": "Downloading one XML file is easy. Running it every day without supervision, through weekends, public holidays, outages and corrected bulletins, is the real work.",
+    "approach": [
+      "Fetch each missing business day from the CBRT archive, starting from a watermark.",
+      "Record holidays (404) as settled so they are never re-requested; retry failed days.",
+      "Upsert on date and currency so reruns and corrected bulletins never duplicate rows.",
+      "Run quality checks, export CSV and JSON, and commit them from a scheduled GitHub Action."
+    ],
+    "result": "A self-maintaining dataset of TRY exchange rates with a public dashboard that refreshes every weekday after the 15:30 bulletin, and a full history in CSV ready for BI tools.",
+    "scope": "Uses the CBRT's public indicative rates. Not affiliated with the CBRT and not investment advice.",
+    "pages": [
+      "USD, EUR, GBP cards",
+      "History chart",
+      "Pipeline status",
+      "All currencies"
+    ],
+    "files": []
+  },
+  {
+    "slug": "invoice-intake-automation",
+    "title": "Invoice Intake Automation",
+    "eyebrow": "Accounts payable / PDF automation",
+    "category": "automation",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": false,
+    "repo": "https://github.com/lidianarhoro88/invoice-intake-automation",
+    "summary": "Supplier invoices arrive as PDFs in three layouts. The pipeline reads them, checks 14 business rules against vendor and PO master data, books clean invoices into SQLite and routes the rest to an exceptions queue with the reason written out.",
+    "tools": [
+      "Python",
+      "pdfplumber",
+      "SQLite",
+      "pytest"
+    ],
+    "visual": {
+      "type": "workflow",
+      "steps": [
+        "Read PDF",
+        "Parse fields",
+        "14 rules",
+        "Book or queue"
+      ]
+    },
+    "question": "The expensive mistakes in accounts payable are not typos: paying the same invoice twice, paying against a used-up PO, or paying a total that does not add up.",
+    "approach": [
+      "Extract text from each PDF and parse fields with Turkish and English label synonyms.",
+      "Normalise Turkish money and dates (1.234,56 and 31.12.2026).",
+      "Validate arithmetic, VAT, vendor tax ID, duplicates, PO existence, ownership and remaining budget.",
+      "Book or reject, record every file by SHA-256 so reruns are safe, and write an HTML run report."
+    ],
+    "result": "On 40 sample invoices: 29 booked, 11 stopped with written reasons. Two over-billed POs were not seeded; they came from ordinary invoices adding up past the approved amount.",
+    "scope": "Vendors, tax IDs and invoices are synthetic PDFs generated for the project.",
+    "pages": [],
+    "files": [],
+    "image": "/project-media/invoice-intake-automation.webp"
+  },
+  {
+    "slug": "csv-data-profiler",
+    "title": "CSV Data Profiler",
+    "eyebrow": "Python tool / Data quality",
+    "category": "apps",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": false,
+    "dashboard": false,
+    "repo": "https://github.com/lidianarhoro88/csv-data-profiler",
+    "summary": "A pip-installable command that profiles any CSV or Excel file: inferred types, a quality score, ranked issues and a self-contained HTML report, with an exit code that turns it into a CI quality gate.",
+    "tools": [
+      "Python",
+      "Pandas",
+      "pytest",
+      "GitHub Actions"
+    ],
+    "visual": {
+      "type": "source",
+      "steps": [
+        "profile-data orders.csv",
+        "quality score 57",
+        "2 high · 3 medium",
+        "report.html"
+      ]
+    },
+    "question": "Before building a pipeline or a dashboard, the first question is always: can this file be trusted?",
+    "approach": [
+      "Read every column as text first so type problems stay visible.",
+      "Infer types with a 90 % parse threshold.",
+      "Check duplicates, keys, missing values, label spellings, whitespace, dates, numbers stored as text and outliers.",
+      "Render a self-contained HTML report and expose --fail-on for CI."
+    ],
+    "result": "On a deliberately messy 507-row order export it finds duplicate rows and keys, five cities written several ways, two date formats and prices stored with currency symbols.",
+    "scope": "The example file is generated by a script in the repository.",
+    "pages": [],
+    "files": [],
+    "image": "/project-media/csv-data-profiler.webp"
+  },
+  {
     "slug": "coffee-shop-data-warehouse",
     "title": "Coffee Shop Chain Data Warehouse",
     "eyebrow": "Data warehousing / Medallion layers",
@@ -50,7 +267,7 @@
     "category": "bi",
     "status": "done",
     "kind": "original",
-    "featured": true,
+    "featured": false,
     "caseStudy": true,
     "dashboard": true,
     "repo": "https://github.com/lidianarhoro88/sales-profit-executive-dashboard",
@@ -84,7 +301,9 @@
       "Revenue & profit trend",
       "Category breakdown"
     ],
-    "files": []
+    "files": [],
+    "liveUrl": "https://lidianarhoro88.github.io/sales-profit-executive-dashboard/",
+    "liveLabel": "Live dashboard"
   },
   {
     "slug": "logistics-analytics-sql-powerbi",
@@ -170,83 +389,6 @@
       "Indicator overview",
       "Country trends"
     ],
-    "files": []
-  },
-  {
-    "slug": "retail-etl-pipeline",
-    "title": "Retail ETL Pipeline",
-    "eyebrow": "Python / SQL pipeline",
-    "category": "engineering",
-    "status": "progress",
-    "kind": "original",
-    "featured": true,
-    "caseStudy": false,
-    "dashboard": false,
-    "repo": "",
-    "summary": "A Python and SQL pipeline that extracts retail files, validates and transforms them, and loads them into a relational model ready for reporting.",
-    "tools": [
-      "Python",
-      "SQL",
-      "PostgreSQL",
-      "Pandas"
-    ],
-    "visual": {
-      "type": "workflow",
-      "steps": [
-        "Extract files",
-        "Validate",
-        "Transform",
-        "Load"
-      ]
-    },
-    "question": "Retail exports arrive with inconsistent formats. A repeatable pipeline beats cleaning the same file by hand every week.",
-    "approach": [
-      "Extract source files with Python.",
-      "Validate keys, types and required fields before anything is loaded.",
-      "Transform into consistent tables.",
-      "Load into the database with a run that can be repeated safely."
-    ],
-    "result": "In progress. Being prepared as a GitHub-ready portfolio project.",
-    "scope": "Built locally in Python and SQL.",
-    "pages": [],
-    "files": []
-  },
-  {
-    "slug": "price-intelligence-pipeline",
-    "title": "Price Intelligence Pipeline",
-    "eyebrow": "Python / Data collection",
-    "category": "engineering",
-    "status": "progress",
-    "kind": "original",
-    "featured": false,
-    "caseStudy": false,
-    "dashboard": false,
-    "repo": "",
-    "summary": "A pipeline that collects product prices, standardises them and stores a history that makes price movement easy to compare over time.",
-    "tools": [
-      "Python",
-      "SQL",
-      "Pandas"
-    ],
-    "visual": {
-      "type": "workflow",
-      "steps": [
-        "Collect prices",
-        "Standardise",
-        "Store history",
-        "Compare"
-      ]
-    },
-    "question": "A single price is a number. A price history is a signal.",
-    "approach": [
-      "Collect prices on a schedule.",
-      "Standardise products and currencies.",
-      "Keep each observation with its date so history is never overwritten.",
-      "Prepare comparison tables for analysis."
-    ],
-    "result": "In progress. Being prepared as a GitHub-ready portfolio project.",
-    "scope": "Built locally in Python and SQL.",
-    "pages": [],
     "files": []
   },
   {

@@ -79,6 +79,14 @@
       "label": "BI & analytics"
     },
     {
+      "id": "automation",
+      "label": "Automation"
+    },
+    {
+      "id": "apps",
+      "label": "Apps & tools"
+    },
+    {
       "id": "learning",
       "label": "Learning & resources"
     }
@@ -86,6 +94,8 @@
   "toolkit": [
     "SQL Server",
     "Python",
+    "dbt",
+    "DuckDB",
     "PostgreSQL",
     "Power BI",
     "SQL",

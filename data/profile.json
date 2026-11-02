@@ -180,7 +180,7 @@
         "ETL",
         "Data modelling"
       ],
-      "related": "retail-etl-pipeline"
+      "related": "pharma-distribution-dbt"
     },
     {
       "id": "tuwaiq",
