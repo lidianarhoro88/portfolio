@@ -126,7 +126,7 @@
       "Upsert on date and currency so reruns and corrected bulletins never duplicate rows.",
       "Run quality checks, export CSV and JSON, and commit them from a scheduled GitHub Action."
     ],
-    "result": "A self-maintaining dataset of TRY exchange rates with a public dashboard that refreshes every weekday after the 15:30 bulletin, and a full history in CSV ready for BI tools.",
+    "result": "First run backfilled 2026: 205 bulletins and 4,510 rates loaded, 13 public holidays recognised from the 404s (including the Ramadan and Sacrifice feasts), 0 failed days, all quality checks passed. It now refreshes itself every weekday after the 15:30 bulletin.",
     "scope": "Uses the CBRT's public indicative rates. Not affiliated with the CBRT and not investment advice.",
     "pages": [
       "USD, EUR, GBP cards",
