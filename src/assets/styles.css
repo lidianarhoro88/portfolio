@@ -1,3 +1,4 @@
+[hidden]{display:none!important}
 :root{
   --bg:#F6F1EA;--bg-2:#EFE7DC;--surface:#FFFCF7;--surface-2:#F9F4EC;
   --ink:#2A1A20;--ink-2:#4A3740;--muted:#6E5A61;--faint:#9A8A8F;
@@ -5,7 +6,7 @@
   --gold:#9A7633;--gold-2:#C7A46A;--gold-tint:#F1E6CF;
   --line:rgba(92,46,62,.14);--line-2:rgba(92,46,62,.26);
   --on-wine:#FFF8F0;--shadow:0 1px 2px rgba(42,26,32,.05),0 12px 32px -18px rgba(42,26,32,.28);
-  --serif:"Fraunces",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+  --serif:"Source Serif 4",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
   --r:14px;--r-sm:9px;--wrap:1180px;
   color-scheme:light;
 }
@@ -31,12 +32,12 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font
 img,svg{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 p{margin:0 0 1em}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.015em;font-variation-settings:"opsz" 96}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.015em}
 h1{font-size:clamp(2.6rem,6vw,4.9rem)}
 h2{font-size:clamp(2rem,4.2vw,3.3rem)}
 h3{font-size:1.45rem;line-height:1.2}
 h4{font-size:1.1rem}
-h1 em,h2 em,h3 em{font-style:italic;color:var(--wine);font-weight:400}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--wine);font-weight:500}
 ::selection{background:var(--gold-tint);color:var(--ink)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -235,7 +236,7 @@ h1 em,h2 em,h3 em{font-style:italic;color:var(--wine);font-weight:400}
 @media (max-width:920px){.think{grid-template-columns:1fr}}
 .think-steps{display:grid;gap:12px;counter-reset:s}
 .think-step{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
-.think-step span{font-family:var(--serif);font-style:italic;font-size:1.8rem;color:var(--gold)}
+.think-step span{font-family:var(--serif);font-size:1.8rem;color:var(--gold)}
 .think-step b{display:block;font-family:var(--serif);font-weight:500;font-size:1.2rem}
 .think-step small{color:var(--muted);font-size:.92rem}
 .example{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
@@ -341,7 +342,7 @@ table.mini tr.drop td{text-decoration:line-through;color:var(--faint)}
 .fact b{font-weight:600}
 .steps-list{list-style:none;padding:0;margin:0 0 24px;display:grid;gap:12px}
 .steps-list li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
-.steps-list li span{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--gold)}
+.steps-list li span{font-family:var(--serif);font-size:1.4rem;color:var(--gold)}
 .preview-lg{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);margin-bottom:12px}
 .preview-lg .viz{padding:28px;gap:16px}
 .preview-lg .viz-node{font-size:.85rem;padding:14px 10px}

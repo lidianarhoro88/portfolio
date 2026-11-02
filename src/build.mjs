@@ -127,7 +127,7 @@ const layout = ({ title, desc = site.description, cur, body }) => `<!doctype htm
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;if(localStorage.getItem('paused')==='1')document.documentElement.classList.add('paused')}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
 </head><body>${header(cur)}<main id="main">${body}</main>${cta()}${footer()}<script src="/assets/app.js" defer></script></body></html>`;
 
@@ -164,7 +164,6 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
     <div class="portrait">${portrait()}</div>
     <div class="portrait-tag">The person behind the models<b>${esc(site.initials)} · ${esc(site.short)}</b></div>
     ${['SQL', 'Python', 'Power BI'].map(t => `<span class="chip-float">${logo(t)}${esc(t)}</span>`).join('')}
-    <a class="studio-card" href="/projects/logistics-analytics-sql-powerbi/"><div class="eyebrow">In the studio / Logistics</div><div class="studio-stat"><b>66%</b><span>of shipments on time. Four drivers, not cities, drove most delays.</span></div><div class="studio-bar" aria-hidden="true"><i style="width:66%"></i></div></a>
   </div>
 </div>
 <div class="wrap"><div class="hero-ribbon">Structure. Context. Clarity.</div></div></section>

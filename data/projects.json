@@ -40,7 +40,8 @@
     "result": "On-time delivery 86.7 % and OTIF 77.3 %. The European-side warehouse is the problem (83.3 % on time against 89.9 %). The top 10 SKUs account for 44.9 % of the ₺290 K lost to expired stock.",
     "scope": "All pharmacies, products and transactions are synthetic, generated to behave like a real ERP export.",
     "pages": [],
-    "files": []
+    "files": [],
+    "image": "/project-media/pharma-distribution-dbt.webp"
   },
   {
     "slug": "construction-cost-control",
@@ -134,7 +135,8 @@
       "Pipeline status",
       "All currencies"
     ],
-    "files": []
+    "files": [],
+    "image": "/project-media/tcmb-fx-rates-pipeline.webp"
   },
   {
     "slug": "invoice-intake-automation",
@@ -258,7 +260,8 @@
       "Branch comparison",
       "Product performance"
     ],
-    "files": []
+    "files": [],
+    "image": "/project-media/coffee-shop-data-warehouse.webp"
   },
   {
     "slug": "sales-profit-executive-dashboard",
@@ -303,7 +306,8 @@
     ],
     "files": [],
     "liveUrl": "https://lidianarhoro88.github.io/sales-profit-executive-dashboard/",
-    "liveLabel": "Live dashboard"
+    "liveLabel": "Live dashboard",
+    "image": "/project-media/sales-profit-executive-dashboard.webp"
   },
   {
     "slug": "logistics-analytics-sql-powerbi",
@@ -347,7 +351,8 @@
       "Drivers & delays",
       "Cities & routes"
     ],
-    "files": []
+    "files": [],
+    "image": "/project-media/logistics-analytics-sql-powerbi.webp"
   },
   {
     "slug": "global-health-indicators-powerbi",
@@ -389,7 +394,8 @@
       "Indicator overview",
       "Country trends"
     ],
-    "files": []
+    "files": [],
+    "image": "/project-media/global-health-indicators-powerbi.webp"
   },
   {
     "slug": "sql-data-warehouse-course-project",
@@ -401,7 +407,7 @@
     "featured": false,
     "caseStudy": false,
     "dashboard": false,
-    "repo": "",
+    "repo": "https://github.com/lidianarhoro88/sql-data-warehouse-project",
     "credit": "Course project by Data With Baraa. Built as practice; the original design belongs to the course author.",
     "summary": "A guided SQL data warehouse build following the Data With Baraa course, used to practise layered warehouse design end to end.",
     "tools": [
@@ -426,6 +432,7 @@
     "result": "In progress. Shared with clear credit to the course author.",
     "scope": "Learning project. Not presented as original design.",
     "pages": [],
-    "files": []
+    "files": [],
+    "image": "/project-media/sql-data-warehouse-course-project.webp"
   }
 ]

@@ -140,7 +140,7 @@
     if (user) fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`).then(r => r.ok ? r.json() : Promise.reject()).then(repos => {
       const known = new Set($$('.card', grid).map(c => (c.dataset.repo || '').toLowerCase()));
       let added = 0;
-      repos.filter(r => !known.has(r.html_url.toLowerCase()) && r.name.toLowerCase() !== user.toLowerCase()).forEach(r => {
+      repos.filter(r => !known.has(r.html_url.toLowerCase()) && r.name.toLowerCase() !== user.toLowerCase() && r.name.toLowerCase() !== 'portfolio').forEach(r => {
         added++;
         const el = document.createElement('article');
         el.className = 'card'; el.dataset.search = `${r.name} ${r.description || ''} ${r.language || ''}`.toLowerCase();
