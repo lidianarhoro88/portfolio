@@ -88,7 +88,7 @@ const header = cur => `<a class="skip" href="#main">Skip to content</a>${sprite}
   </nav>
   <button class="icon-btn search-btn" type="button" data-search aria-label="Find a project">${ico('search')}</button>
   <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">${ico('sun', 'icon sun')}${ico('moon', 'icon moon')}</button>
-  <a class="btn btn-primary btn-sm nav-cta" href="/contact/">Let’s connect</a>
+  <a class="status-badge nav-cta" href="/contact/" title="Let’s connect"><span class="status-dot" aria-hidden="true"></span>Open to work</a>
   <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="Menu">${ico('menu')}</button>
 </div>
 <nav class="mobile-nav wrap" aria-label="Mobile">${[...site.nav, ...site.more, { label: 'Contact', href: '/contact/' }].map(l => navLink(l, cur)).join('')}</nav>
