@@ -89,6 +89,7 @@ const header = cur => `<a class="skip" href="#main">Skip to content</a>${sprite}
   </nav>
   <button class="icon-btn search-btn" type="button" data-search aria-label="Find a project">${ico('search')}</button>
   <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">${ico('sun', 'icon sun')}${ico('moon', 'icon moon')}</button>
+  <a class="lang-switch" href="${arOf(cur)}" lang="ar" hreflang="ar">العربية</a>
   <a class="status-badge nav-cta" href="/contact/" title="Let’s connect"><span class="status-dot" aria-hidden="true"></span>Open to work</a>
   <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="Menu">${ico('menu')}</button>
 </div>
@@ -118,19 +119,25 @@ const footer = () => `<footer class="footer"><div class="wrap">
   <div class="modal-foot"><span><span class="kbd">↑</span> <span class="kbd">↓</span> to navigate · <span class="kbd">Enter</span> to open · <span class="kbd">Esc</span> to close</span><a class="link" href="/work/">Browse all work ↗</a></div>
 </div></div>`;
 
-const layout = ({ title, desc = site.description, cur, body }) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+/* ---------- language helpers ---------- */
+const AR_PAGES = { '/': '/ar/', '/work/': '/ar/work/', '/about/': '/ar/about/', '/contact/': '/ar/contact/' };
+const arOf = cur => AR_PAGES[cur] || '/ar/';
+const enOf = cur => Object.keys(AR_PAGES).find(k => AR_PAGES[k] === cur) || '/';
+const altLinks = cur => { const en = AR_PAGES[cur] ? cur : Object.keys(AR_PAGES).find(k => AR_PAGES[k] === cur); return en ? `<link rel="alternate" hreflang="en" href="${site.url}${en}"><link rel="alternate" hreflang="ar" href="${site.url}${AR_PAGES[en]}">` : ''; };
+
+const layout = ({ title, desc = site.description, cur, body, lang = 'en' }) => `<!doctype html><html lang="${lang}"${lang === 'ar' ? ' dir="rtl"' : ''}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="${site.themeColor}">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}"><meta name="author" content="${esc(site.name)}">
-<link rel="canonical" href="${site.url}${cur}">
+<link rel="canonical" href="${site.url}${cur}">${altLinks(cur)}
 <meta property="og:type" content="website"><meta property="og:site_name" content="${esc(site.name)}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${site.url}${cur}"><meta property="og:image" content="${site.url}/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(site.name)} — data engineering and BI portfolio">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${site.url}/social-card.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;if(localStorage.getItem('paused')==='1')document.documentElement.classList.add('paused')}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700${lang === 'ar' ? '&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600' : ''}&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
-</head><body>${header(cur)}<main id="main">${body}</main>${cta()}${footer()}<script src="/assets/app.js" defer></script><script defer src="/_vercel/insights/script.js"></script></body></html>`;
+</head><body>${lang === 'ar' ? headerAr(cur) : header(cur)}<main id="main">${body}</main>${lang === 'ar' ? ctaAr() : cta()}${lang === 'ar' ? footerAr() : footer()}<script src="/assets/app.js" defer></script><script defer src="/_vercel/insights/script.js"></script></body></html>`;
 
 const pages = {};
 const page = (p, o) => { pages[p] = layout({ ...o, cur: p }); };
@@ -479,6 +486,101 @@ pages['/404'] = layout({ title: T('Page not found'), cur: '/404', body: `<sectio
 
 /* ---------- write ---------- */
 fs.rmSync(OUT, { recursive: true, force: true });
+/* ---------- ARABIC ---------- */
+const ar = read('ar.json');
+const fwd = () => ico('arrow', 'icon icon-flip');
+const headerAr = cur => `<a class="skip" href="#main">تخطَّ إلى المحتوى</a>${sprite}
+<header class="header"><div class="nav-shell wrap">
+  <a class="brand" href="/ar/" aria-label="الصفحة الرئيسية"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>${esc(site.brand)}<span class="brand-dot">.</span></span></a>
+  <nav class="nav" aria-label="القائمة الرئيسية">${ar.nav.map(l => navLink(l, cur)).join('')}</nav>
+  <button class="icon-btn" type="button" data-theme-toggle aria-label="تبديل المظهر">${ico('sun', 'icon sun')}${ico('moon', 'icon moon')}</button>
+  <a class="lang-switch" href="${enOf(cur)}" lang="en" hreflang="en">English</a>
+  <a class="status-badge nav-cta" href="/ar/contact/"><span class="status-dot" aria-hidden="true"></span>${esc(ar.openToWork)}</a>
+  <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="القائمة">${ico('menu')}</button>
+</div>
+<nav class="mobile-nav wrap" aria-label="قائمة الجوال">${ar.nav.map(l => navLink(l, cur)).join('')}<a href="${enOf(cur)}" lang="en">English</a></nav>
+</header>`;
+const ctaAr = () => `<section class="cta"><div class="wrap reveal"><div class="eyebrow">${esc(ar.cta.eyebrow)}</div><h2>${ar.cta.title}</h2><a class="btn" href="/ar/contact/">${esc(ar.cta.button)} ${fwd()}</a></div></section>`;
+const footerAr = () => `<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><a class="brand" href="/ar/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>${esc(site.brand)}<span class="brand-dot">.</span></span></a><p class="muted" style="margin-top:14px">${esc(ar.footer.tagline)}</p><div class="eyebrow" style="margin:0">${esc(ar.location)} · ${esc(ar.availability)}</div></div>
+    <nav class="footer-links" aria-label="روابط">${ar.nav.map(l => `<a href="${l.href}">${esc(l.label)}</a>`).join('')}<a href="/" lang="en">${esc(ar.footer.english)}</a></nav>
+    <div class="footer-social"><a href="${ghUrl}" target="_blank" rel="noopener">GitHub</a><a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:${site.email}">${esc(site.email)}</a></div>
+  </div>
+  <div class="footer-base"><span>© ${year} ${esc(ar.name)}</span><span>${esc(ar.footer.tagline)}</span><a href="#main">${esc(ar.footer.top)}</a></div>
+</div></footer>` + footer().slice(footer().indexOf('<div class="modal"'));
+const pageAr = (p, o) => { pages[p] = layout({ ...o, cur: p, lang: 'ar' }); };
+const cardAr = p => { const t = ar.projects[p.slug] || { title: p.title, summary: p.summary }; return `<article class="card reveal">
+  <a class="card-media" href="/projects/${p.slug}/" aria-label="${esc(t.title)}">${viz(p)}</a>
+  <div class="card-body">
+    <div class="card-cat">${esc(ar.categories[p.category] || '')}</div>
+    <h3><a href="/projects/${p.slug}/">${esc(t.title)}</a></h3>
+    <p>${esc(t.summary)}</p>
+    <div class="tags" dir="ltr">${p.tools.slice(0, 4).map(x => `<span>${esc(x)}</span>`).join('')}</div>
+    <div class="card-links"><a href="/projects/${p.slug}/">${esc(ar.work.story)} ${fwd()}</a>${p.liveUrl ? `<a class="muted" href="${p.liveUrl}" target="_blank" rel="noopener">${esc(ar.work.live)}</a>` : ''}${p.repo ? `<a class="muted" href="${p.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}</div>
+  </div></article>`; };
+const headAr = (eyebrow, title, text, extra = '') => `<div class="section-head reveal"><div><div class="eyebrow">${eyebrow}</div><h2>${title}</h2></div><div>${text ? `<p>${esc(text)}</p>` : ''}${extra}</div></div>`;
+
+pageAr('/ar/', { title: `${ar.name} | ${ar.role}`, desc: ar.about.intro, body: `
+<section class="hero"><div class="wrap hero-grid">
+  <div class="reveal">
+    <div class="hero-name">${esc(ar.name)}</div>
+    <div class="hero-role">${esc(ar.roleLine)}</div>
+    <h1>${ar.hero.title}</h1>
+    <p class="lede">${esc(ar.hero.lede)}</p>
+    <div class="btns"><a class="btn btn-primary" href="/ar/work/">${esc(ar.hero.primary)} ${fwd()}</a>${hasCv ? `<a class="btn" href="/resume.pdf" download title="${esc(ar.hero.cvNote)}">${esc(ar.hero.cv)} ${ico('download')}</a>` : ''}</div>
+    <div class="hero-meta"><span class="pin">${esc(ar.location)} / ${esc(ar.availability)}</span></div>
+  </div>
+  <div class="stage reveal" aria-label="الصورة الشخصية">
+    <div class="portrait-line" aria-hidden="true"></div>
+    <div class="portrait">${portrait()}</div>
+    <div class="portrait-tag">${esc(ar.hero.tag)}<b>${esc(ar.name)}</b></div>
+    ${['SQL', 'Python', 'Power BI'].map(t => `<span class="chip-float" dir="ltr">${logo(t)}${esc(t)}</span>`).join('')}
+  </div>
+</div>
+<div class="wrap"><div class="hero-ribbon">${esc(ar.hero.ribbon)}</div></div></section>
+<section class="toolkit" aria-label="${esc(ar.toolkit)}"><div class="wrap toolkit-row"><span class="toolkit-label">${esc(ar.toolkit)}</span>
+<div class="marquee"><div class="marquee-track">${[...site.toolkit, ...site.toolkit].map(t => `<span class="tool">${logo(t)}${esc(t)}</span>`).join('')}</div></div></div></section>
+<section class="section tight"><div class="wrap">
+  <div class="disciplines reveal"><div>${esc(ar.disciplines.intro)}</div>${ar.disciplines.items.map(d => `<a href="${d.href}"><span>${esc(d.k)}</span><b>${esc(d.b)}</b></a>`).join('')}</div>
+</div></section>
+<section class="section"><div class="wrap">
+  ${headAr(esc(ar.work.eyebrow), ar.work.title, ar.work.text)}
+  <div class="grid grid-3">${featured.map(cardAr).join('')}</div>
+  <div class="section-foot"><span></span><a class="btn" href="/ar/work/">${esc(ar.work.all)} ${fwd()}</a></div>
+</div></section>
+<section class="section band"><div class="wrap">
+  ${headAr(esc(ar.now.eyebrow), ar.now.title, '')}
+  <div class="building">${ar.now.items.map(n => `<a class="build-card reveal" href="${n.href}"><span class="badge" style="align-self:flex-start">${esc(n.label)}</span><h3>${esc(n.title)}</h3><p class="muted" style="margin:0">${esc(n.text)}</p><span class="link">${fwd()}</span></a>`).join('')}</div>
+</div></section>` });
+
+pageAr('/ar/work/', { title: `المشاريع | ${ar.name}`, desc: ar.work.text, body: `
+<section class="page-head"><div class="wrap"><div class="eyebrow"><b>${esc(ar.work.eyebrow)}</b></div><h1>${ar.work.pageTitle}</h1><p class="lede">${esc(ar.work.pageLede)}</p></div></section>
+<section class="section" style="padding-top:0"><div class="wrap"><div class="grid grid-3">${projects.map(cardAr).join('')}</div></div></section>` });
+
+pageAr('/ar/about/', { title: `عنّي | ${ar.name}`, desc: ar.about.intro, body: `
+<section class="page-head"><div class="wrap"><div class="eyebrow"><b>${esc(ar.about.eyebrow)}</b></div><h1>${ar.about.title}</h1><p class="lede">${esc(ar.about.intro)}</p></div></section>
+<section class="section" style="padding-top:0"><div class="wrap split">
+  <div class="photo-card reveal">${portrait()}</div>
+  <div class="prose reveal">${ar.about.body.map(p => `<p>${esc(p)}</p>`).join('')}</div>
+</div></section>
+<section class="section band"><div class="wrap">
+  ${headAr(esc(ar.about.experience), esc(ar.about.experience), '')}
+  <div class="timeline">${ar.about.roles.map(x => `<div class="tl-item reveal"><div class="tl-meta">${esc(x.dates)}</div><h3>${esc(x.role)}</h3><div class="org" dir="ltr" style="text-align:right">${esc(x.org)}</div><ul>${x.points.map(pt => `<li>${esc(pt)}</li>`).join('')}</ul></div>`).join('')}</div>
+</div></section>
+<section class="section"><div class="wrap"><div class="grid grid-2">
+  <div class="card reveal"><div class="card-body"><div class="card-cat">${esc(ar.about.education)}</div><h3>${esc(ar.about.degree)}</h3><p style="-webkit-line-clamp:unset">${esc(ar.about.school)}</p></div></div>
+  <div class="card reveal"><div class="card-body"><div class="card-cat">${esc(ar.about.languages)}</div><h3>${esc(ar.about.languagesText)}</h3></div></div>
+</div></div></section>` });
+
+pageAr('/ar/contact/', { title: `تواصل | ${ar.name}`, desc: ar.contact.lede, body: `
+<section class="page-head"><div class="wrap"><div class="eyebrow"><b>${esc(ar.contact.eyebrow)}</b></div><h1>${ar.contact.title}</h1><p class="lede">${esc(ar.contact.lede)}</p></div></section>
+<section class="section" style="padding-top:0"><div class="wrap"><div class="facts" style="gap:16px;max-width:640px">
+  <div class="fact"><small>${esc(ar.contact.email)}</small><b><a class="link" href="mailto:${site.email}" dir="ltr">${esc(site.email)}</a></b> <button class="btn btn-sm copy-btn" type="button" data-copy="${site.email}" style="margin-top:10px">${ico('copy')}<span class="label">${esc(ar.contact.copy)}</span></button></div>
+  <div class="fact"><small>LinkedIn</small><b><a class="link" href="${site.linkedin}" target="_blank" rel="noopener">${esc(ar.contact.profile)}</a></b></div>
+  <div class="fact"><small>GitHub</small><b><a class="link" href="${ghUrl}" target="_blank" rel="noopener" dir="ltr">github.com/${esc(site.github)}</a></b></div>
+</div></div></section>` });
+
 for (const [p, html] of Object.entries(pages)) {
   const file = p === '/404' ? path.join(OUT, '404.html') : path.join(OUT, p, 'index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });
