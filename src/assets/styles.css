@@ -143,8 +143,11 @@ h1 em,h2 em,h3 em{font-style:normal;color:var(--wine);font-weight:500}
 .pause-btn:hover{color:var(--wine);border-color:var(--wine)}
 .pause-btn .icon{width:12px;height:12px}
 .stage{position:relative;aspect-ratio:1/1.08;max-width:470px;justify-self:center;width:100%}
-.portrait{position:absolute;inset:6% 10% 10% 6%;border-radius:220px 220px 26px 26px;overflow:hidden;background:var(--wine);box-shadow:var(--shadow)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.portrait{position:absolute;inset:6% 10% 10% 6%;border-radius:220px 220px 26px 26px;overflow:hidden;background:var(--blush)}
+.portrait-line{position:absolute;inset:2.5% 13% 6.5% 2.5%;border-radius:220px 220px 30px 30px;border:1.5px solid var(--gold-2);pointer-events:none}
+:root{--blush:#EBDCE0}:root[data-theme="dark"]{--blush:#4A3139}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--blush:#4A3139}}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
 .portrait .mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:7rem;font-style:italic;color:var(--gold-2);background:radial-gradient(circle at 30% 20%,#7A3D52,#5C2E3E 55%,#3E1C29)}
 .portrait-tag{position:absolute;left:-4%;top:1%;z-index:2;white-space:nowrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);box-shadow:var(--shadow)}
 .portrait-tag b{display:block;font-family:var(--serif);font-size:1.15rem;letter-spacing:0;text-transform:none;color:var(--wine);font-weight:500}
@@ -268,7 +271,7 @@ table.mini tr.drop td{text-decoration:line-through;color:var(--faint)}
 /* about teaser */
 .split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:center}
 @media (max-width:860px){.split{grid-template-columns:1fr}}
-.photo-card{border-radius:22px;overflow:hidden;aspect-ratio:4/5;position:relative;background:var(--wine);max-width:380px}
+.photo-card{border-radius:22px;overflow:hidden;aspect-ratio:4/5;position:relative;background:var(--blush);max-width:380px}
 .photo-card img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
 .photo-card .mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:6rem;font-style:italic;color:var(--gold-2);background:radial-gradient(circle at 30% 20%,#7A3D52,#5C2E3E 55%,#3E1C29)}
 

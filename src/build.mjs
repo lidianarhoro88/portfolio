@@ -161,6 +161,7 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
     <div class="hero-meta"><span class="pin">${esc(site.location)} / ${esc(site.availability)}</span><button class="pause-btn" type="button" data-pause aria-pressed="false">${ico('pause')}<span class="label">Pause animation</span></button></div>
   </div>
   <div class="stage reveal" aria-label="Portrait and toolkit">
+    <div class="portrait-line" aria-hidden="true"></div>
     <div class="portrait">${portrait()}</div>
     <div class="portrait-tag">The person behind the models<b>${esc(site.initials)} · ${esc(site.short)}</b></div>
     ${['SQL', 'Python', 'Power BI'].map(t => `<span class="chip-float">${logo(t)}${esc(t)}</span>`).join('')}
