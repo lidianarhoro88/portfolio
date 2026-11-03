@@ -9,7 +9,7 @@ const OUT = path.join(ROOT, 'dist');
 const read = f => JSON.parse(fs.readFileSync(path.join(ROOT, 'data', f), 'utf8'));
 const site = read('site.json');
 const profile = read('profile.json');
-const projects = read('projects.json').map((p, i) => ({ ...p, order: i }));
+const projects = read('projects.json').filter(p => !p.hidden).map((p, i) => ({ ...p, order: i }));
 const hasPortrait = fs.existsSync(path.join(ROOT, 'public', 'portrait.webp'));
 const hasCv = fs.existsSync(path.join(ROOT, 'public', 'resume.pdf'));
 const year = new Date().getFullYear();
@@ -30,6 +30,7 @@ const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden=
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
 <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
 <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
 <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
 <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
@@ -129,10 +130,26 @@ const layout = ({ title, desc = site.description, cur, body }) => `<!doctype htm
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
-</head><body>${header(cur)}<main id="main">${body}</main>${cta()}${footer()}<script src="/assets/app.js" defer></script></body></html>`;
+</head><body>${header(cur)}<main id="main">${body}</main>${cta()}${footer()}<script src="/assets/app.js" defer></script><script defer src="/_vercel/insights/script.js"></script></body></html>`;
 
 const pages = {};
 const page = (p, o) => { pages[p] = layout({ ...o, cur: p }); };
+/* articles: tiny markdown (## headings, lists, code blocks, links, **bold**, `code`) */
+const articles = read('articles.json');
+const inline = s => esc(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, t, h) => `<a class="link" href="${h}"${/^https?:/.test(h) ? ' target="_blank" rel="noopener"' : ''}>${t}</a>`);
+const md = src => src.split(/\n{2,}/).map(block => {
+  if (block.startsWith('```')) return `<pre><code>${esc(block.replace(/^```\w*\n?/, '').replace(/\n?```$/, ''))}</code></pre>`;
+  if (block.startsWith('## ')) return `<h2>${inline(block.slice(3))}</h2>`;
+  if (/^- /.test(block)) return `<ul>${block.split('\n').map(l => `<li>${inline(l.replace(/^- /, ''))}</li>`).join('')}</ul>`;
+  return `<p>${inline(block)}</p>`;
+}).join('\n');
+profile.notes.forEach(n => { const a = articles.notes.find(x => x.match === n.title); if (a) Object.assign(n, a, { status: 'Published' }); });
+profile.posts.forEach(p => { const a = articles.posts.find(x => x.id === p.id); if (a) p.body = a.body; });
+const articlePage = ({ url, eyebrow, title, meta, body, back }) => page(url, { title: T(title), desc: body.replace(/[#*`\[\]]/g, '').split('\n')[0].slice(0, 155), body: `
+<section class="page-head"><div class="wrap"><div class="eyebrow">${eyebrow}</div><h1>${esc(title)}</h1><p class="lede" style="font-size:.95rem">${esc(meta)}</p></div></section>
+<section class="section" style="padding-top:0"><div class="wrap"><article class="article">${md(body)}</article>
+<div class="btns" style="margin-top:40px"><a class="btn" href="${back[0]}">${ico('back')} ${esc(back[1])}</a></div></div></section>` });
+
 const T = t => `${t} | ${site.name}`;
 
 /* ---------- derived ---------- */
@@ -157,7 +174,7 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
     <div class="hero-role">${esc(site.roleLine)}</div>
     <h1>From scattered systems to <em>clear answers.</em></h1>
     <p class="lede">Nine years of turning operational data into one trusted place: ETL pipelines in SQL Server and Python, star schemas, and Power BI dashboards that management actually uses.</p>
-    <div class="btns"><a class="btn btn-primary" href="/work/">Explore my work ${ico('arrow')}</a><a class="btn" href="/services/">Work with me</a></div>
+    <div class="btns"><a class="btn btn-primary" href="/work/">Explore my work ${ico('arrow')}</a>${hasCv ? `<a class="btn" href="/resume.pdf" download>Download CV ${ico('download')}</a>` : `<a class="btn" href="/services/">Work with me</a>`}</div>
     <div class="hero-meta"><span class="pin">${esc(site.location)} / ${esc(site.availability)}</span><button class="pause-btn" type="button" data-pause aria-pressed="false">${ico('pause')}<span class="label">Pause animation</span></button></div>
   </div>
   <div class="stage reveal" aria-label="Portrait and toolkit">
@@ -187,8 +204,8 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
 </div></section>
 
 <section class="section band"><div class="wrap">
-  ${head('<b>Currently building</b>', 'Still asking. *Still improving.*', 'A look at the projects I’m actively shaping right now.', `<a class="link" href="/work/?status=progress" style="margin-top:12px">See work in progress ${ico('arrow')}</a>`)}
-  <div class="building">${building.map(p => `<a class="build-card reveal" href="/projects/${p.slug}/"><span class="badge" style="align-self:flex-start">In progress</span><h3>${esc(p.title)}</h3><p class="muted" style="margin:0">${esc(p.summary)}</p><span class="link">Explore the project ${ico('arrow')}</span></a>`).join('')}</div>
+  ${head('<b>Right now</b>', 'Still asking. *Still improving.*', 'What I am building and studying this month.', `<a class="link" href="/learning/" style="margin-top:12px">See the learning log ${ico('arrow')}</a>`)}
+  <div class="building">${profile.now.map(n => `<a class="build-card reveal" href="${n.href}"><span class="badge" style="align-self:flex-start">${esc(n.label)}</span><h3>${esc(n.title)}</h3><p class="muted" style="margin:0">${esc(n.text)}</p><span class="link">Explore ${ico('arrow')}</span></a>`).join('')}</div>
 </div></section>
 
 <section class="section"><div class="wrap">
@@ -239,7 +256,7 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
 
 <section class="section band"><div class="wrap">
   ${head('<b>Writing</b> / Keep the conversation going', 'Build it. Explain it. *Share what I learn.*', 'Notes, dashboards and reflections from the work. Explore recent posts.')}
-  <div class="tiles">${profile.posts.map(p => tile(`/posts/#post-${p.id}`, p.topic, p.title, p.summary, 'Read & preview the post')).join('')}</div>
+  <div class="tiles">${profile.posts.map(p => tile(`/posts/${p.id}/`, p.topic, p.title, p.summary, 'Read the write-up')).join('')}</div>
   <div class="section-foot"><span>Recent posts and project write-ups.</span><a class="btn" href="/posts/">Explore posts ${ico('arrow')}</a></div>
 </div></section>
 
@@ -400,8 +417,8 @@ page('/recruiters/', { title: T('For hiring teams'), desc: `A 60-second overview
 /* ---------- LEARN (field notes) ---------- */
 page('/learn/', { title: T('Field notes & labs'), desc: `Notes, labs and explanations from ${site.short}’s data learning.`, body: `
 <section class="page-head"><div class="wrap"><div class="eyebrow"><b>Field notes</b> / Learning in the open <span class="tag">${ico('cup')}</span></div><h1>Notes I wish <em>I had earlier.</em></h1><p class="lede">Short labs and explanations from the work, written as I learn, for people starting their own data path.</p></div></section>
-<section class="section" style="padding-top:0"><div class="wrap"><div class="tiles">${profile.notes.map(n => `<div class="tile reveal"><span>${esc(n.tags.join(' · '))}</span><b>${esc(n.title)}</b><small>${esc(n.line)}</small><span class="badge" style="align-self:flex-start;margin-top:auto">${esc(n.status)}</span></div>`).join('')}</div>
-<p class="note">Notes are published as they are finished. Follow along on <a class="link" href="${ghUrl}" target="_blank" rel="noopener">GitHub</a>.</p></div></section>` });
+<section class="section" style="padding-top:0"><div class="wrap"><div class="tiles">${profile.notes.map(n => n.slug ? `<a class="tile reveal" href="/learn/${n.slug}/"><span>${esc(n.tags.join(' · '))}</span><b>${esc(n.title)}</b><small>${esc(n.line)}</small><span class="arrow">Read · ${n.minutes} min ${ico('arrow')}</span></a>` : `<div class="tile reveal"><span>${esc(n.tags.join(' · '))}</span><b>${esc(n.title)}</b><small>${esc(n.line)}</small><span class="badge" style="align-self:flex-start;margin-top:auto">${esc(n.status)}</span></div>`).join('')}</div>
+<p class="note">More notes follow as I write them. Follow along on <a class="link" href="${ghUrl}" target="_blank" rel="noopener">GitHub</a>.</p></div></section>` });
 
 /* ---------- LEARNING LOG ---------- */
 page('/learning/', { title: T('Learning log'), desc: `Courses and programmes ${site.short} is taking, connected to the projects they feed.`, body: `
@@ -412,8 +429,11 @@ page('/learning/', { title: T('Learning log'), desc: `Courses and programmes ${s
 /* ---------- POSTS ---------- */
 page('/posts/', { title: T('Writing & posts'), desc: `Posts and write-ups by ${site.name} about data warehousing, BI and dashboards.`, body: `
 <section class="page-head"><div class="wrap"><div class="eyebrow"><b>Writing</b> / Keep the conversation going</div><h1>Build it. Explain it. <em>Share what I learn.</em></h1><p class="lede">Posts and project write-ups, each connected to the work it describes.</p></div></section>
-<section class="section" style="padding-top:0"><div class="wrap"><div class="grid grid-2">${profile.posts.map(p => { const r = projects.find(x => x.slug === p.project); return `<article class="card reveal" id="post-${p.id}" style="scroll-margin-top:90px"><div class="card-body"><div class="card-cat">${esc(p.topic)} · ${esc(p.date)}</div><h3>${esc(p.title)}</h3><p style="-webkit-line-clamp:unset">${esc(p.summary)}</p><div class="card-links">${p.url ? `<a href="${p.url}" target="_blank" rel="noopener">Read the post ${ico('external')}</a>` : '<span class="pending">Post link coming soon</span>'}${r ? `<a class="muted" href="/projects/${r.slug}/">Related project</a>` : ''}</div></div></article>`; }).join('')}</div>
+<section class="section" style="padding-top:0"><div class="wrap"><div class="grid grid-2">${profile.posts.map(p => { const r = projects.find(x => x.slug === p.project); return `<article class="card reveal" id="post-${p.id}" style="scroll-margin-top:90px"><div class="card-body"><div class="card-cat">${esc(p.topic)} · ${esc(p.date)}</div><h3>${esc(p.title)}</h3><p style="-webkit-line-clamp:unset">${esc(p.summary)}</p><div class="card-links">${p.body ? `<a href="/posts/${p.id}/">Read the write-up ${ico('arrow')}</a>` : ''}${p.url ? `<a class="muted" href="${p.url}" target="_blank" rel="noopener">On LinkedIn</a>` : ''}${r ? `<a class="muted" href="/projects/${r.slug}/">Related project</a>` : ''}</div></div></article>`; }).join('')}</div>
 ${site.linkedin ? `<div class="btns" style="margin-top:30px"><a class="btn" href="${site.linkedin}" target="_blank" rel="noopener">Explore LinkedIn posts ${ico('external')}</a></div>` : ''}</div></section>` });
+
+profile.notes.filter(n => n.slug).forEach(n => articlePage({ url: `/learn/${n.slug}/`, eyebrow: `<b>Field notes</b> / ${esc(n.tags.join(' · '))}`, title: n.title, meta: `${n.line} · ${n.minutes} min read · ${n.date}`, body: n.body, back: ['/learn/', 'All field notes'] }));
+profile.posts.filter(p => p.body).forEach(p => articlePage({ url: `/posts/${p.id}/`, eyebrow: `<b>Writing</b> / ${esc(p.topic)}`, title: p.title, meta: `${p.summary}`, body: p.body, back: ['/posts/', 'All posts'] }));
 
 /* ---------- SERVICES ---------- */
 page('/services/', { title: T('Work with me'), desc: `BI, data warehousing and systems coordination services by ${site.name}.`, body: `
@@ -472,7 +492,7 @@ const idx = [
   ...projects.map(p => ({ title: p.title, url: `/projects/${p.slug}/`, type: catLabel(p.category), text: p.summary + ' ' + p.tools.join(' ') })),
   ...dashboards.map(p => ({ title: p.title + ' report', url: `/dashboards/${p.slug}/`, type: 'Dashboard', text: p.pages.join(' · ') + ' ' + p.tools.join(' ') })),
   ...profile.learning.map(c => ({ title: c.title, url: `/learning/#course-${c.id}`, type: 'Learning', text: c.provider + ' ' + c.tags.join(' ') })),
-  ...profile.posts.map(p => ({ title: p.title, url: `/posts/#post-${p.id}`, type: 'Post', text: p.summary })),
+  ...profile.posts.map(p => ({ title: p.title, url: `/posts/${p.id}/`, type: 'Post', text: p.summary })),
   ...[...site.nav, ...site.more, { label: 'Contact', href: '/contact/' }].map(l => ({ title: l.label, url: l.href, type: 'Page', text: '' }))
 ];
 fs.writeFileSync(path.join(OUT, 'search-index.json'), JSON.stringify(idx));

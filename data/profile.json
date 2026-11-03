@@ -77,68 +77,20 @@
   },
   "credentials": [
     {
-      "title": "SAP Certified Application Associate: Business Foundation & Integration with SAP ERP 6.07",
-      "issuer": "SAP",
-      "date": "Sep 2025",
-      "area": "Systems & ERP",
-      "status": "Earned",
-      "url": ""
-    },
-    {
-      "title": "Business Process Modeling and Analysis",
-      "issuer": "SAP",
-      "date": "Dec 2025",
-      "area": "Business analysis",
-      "status": "Earned",
-      "url": ""
-    },
-    {
-      "title": "SAP Requirements Gathering and Documentation",
-      "issuer": "SAP",
-      "date": "Nov 2025",
-      "area": "Business analysis",
-      "status": "Earned",
-      "url": ""
-    },
-    {
       "title": "Data Modeling in Power BI",
-      "issuer": "Microsoft",
+      "issuer": "Microsoft · Coursera",
       "date": "Jul 2026",
       "area": "Business intelligence",
       "status": "Earned",
-      "url": ""
+      "url": "https://www.coursera.org/account/accomplishments/verify/Z7AXI3P9THGP"
     },
     {
       "title": "SQL Foundations",
-      "issuer": "Microsoft",
+      "issuer": "Microsoft · Coursera",
       "date": "Jul 2026",
       "area": "Databases",
       "status": "Earned",
-      "url": ""
-    },
-    {
-      "title": "Data Analysis and Visualization with Power BI",
-      "issuer": "Microsoft",
-      "date": "Jun 2026",
-      "area": "Business intelligence",
-      "status": "Earned",
-      "url": ""
-    },
-    {
-      "title": "Analyzing and Visualizing Data with Microsoft Power BI",
-      "issuer": "Microsoft",
-      "date": "Jul 2025",
-      "area": "Business intelligence",
-      "status": "Earned",
-      "url": ""
-    },
-    {
-      "title": "Project Management Essentials",
-      "issuer": "IBM · Coursera",
-      "date": "Dec 2025",
-      "area": "Project management",
-      "status": "Earned",
-      "url": ""
+      "url": "https://www.coursera.org/account/accomplishments/verify/9J4W16UXZUCT"
     },
     {
       "title": "Data Analytics Job Simulation",
@@ -146,7 +98,55 @@
       "date": "Jul 2026",
       "area": "Analytics",
       "status": "Earned",
-      "url": ""
+      "url": "https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a4789e39dea91c2e48e1686_1783117046907_completion_certificate.pdf"
+    },
+    {
+      "title": "Data Analysis and Visualization with Power BI",
+      "issuer": "Microsoft · Coursera",
+      "date": "Jun 2026",
+      "area": "Business intelligence",
+      "status": "Earned",
+      "url": "https://www.coursera.org/account/accomplishments/verify/6HVJA0PXQRVG"
+    },
+    {
+      "title": "Business Process Modeling and Analysis",
+      "issuer": "SAP · Coursera",
+      "date": "Dec 2025",
+      "area": "Business analysis",
+      "status": "Earned",
+      "url": "https://www.coursera.org/account/accomplishments/verify/CYZ6QNSDLCGS"
+    },
+    {
+      "title": "Project Management Essentials",
+      "issuer": "IBM · Coursera (Credly badge)",
+      "date": "Dec 2025",
+      "area": "Project management",
+      "status": "Earned",
+      "url": "https://www.credly.com/badges/b4e1c7fa-34e4-4845-8bbd-1644b0d87e49"
+    },
+    {
+      "title": "Requirements Gathering and Documentation",
+      "issuer": "SAP · Coursera",
+      "date": "Nov 2025",
+      "area": "Business analysis",
+      "status": "Earned",
+      "url": "https://www.coursera.org/account/accomplishments/verify/7F8DJ9OVM2YI"
+    },
+    {
+      "title": "Foundations of Business Analysis",
+      "issuer": "SAP · Coursera",
+      "date": "Sep 2025",
+      "area": "Business analysis",
+      "status": "Earned",
+      "url": "https://www.coursera.org/account/accomplishments/verify/TYPFBI1TAWHI"
+    },
+    {
+      "title": "Preparing Data for Analysis with Microsoft Excel",
+      "issuer": "Microsoft · Coursera",
+      "date": "Jul 2025",
+      "area": "Analytics",
+      "status": "Earned",
+      "url": "https://www.coursera.org/account/accomplishments/verify/A44WYAHTJ0IT"
     },
     {
       "title": "Google Analytics for Business",
@@ -158,6 +158,19 @@
     }
   ],
   "learning": [
+    {
+      "id": "datacamp",
+      "title": "SQL for data engineering: 4 courses completed",
+      "provider": "DataCamp",
+      "status": "In progress",
+      "tags": [
+        "Understanding Data Engineering",
+        "Introduction to SQL",
+        "Intermediate SQL",
+        "Joining Data in SQL"
+      ],
+      "related": "pharma-distribution-dbt"
+    },
     {
       "id": "fabric",
       "title": "Microsoft Fabric Data Engineer (DP-700)",
@@ -204,7 +217,7 @@
         "Power Query",
         "DAX"
       ],
-      "related": "global-health-indicators-powerbi"
+      "related": "sales-profit-executive-dashboard"
     },
     {
       "id": "baraa",
@@ -325,6 +338,26 @@
         "Power BI"
       ],
       "status": "Drafting"
+    }
+  ],
+  "now": [
+    {
+      "label": "Building",
+      "title": "Power BI report on the pharma dbt marts",
+      "text": "A three-page report (overview, delivery, expiry risk) on the tested star schema, reconciled to the warehouse before it is published.",
+      "href": "/projects/pharma-distribution-dbt/"
+    },
+    {
+      "label": "Studying",
+      "title": "SQL for data engineering on DataCamp",
+      "text": "Four courses done: Understanding Data Engineering, Introduction to SQL, Intermediate SQL and Joining Data in SQL. Next: relational database design.",
+      "href": "/learning/"
+    },
+    {
+      "label": "In progress",
+      "title": "SQL Data Warehouse (course project)",
+      "text": "A guided SQL Server warehouse following Data With Baraa, used to practise layered design end to end.",
+      "href": "/projects/sql-data-warehouse-course-project/"
     }
   ]
 }

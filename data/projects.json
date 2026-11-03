@@ -395,7 +395,8 @@
       "Country trends"
     ],
     "files": [],
-    "image": "/project-media/global-health-indicators-powerbi.webp"
+    "image": "/project-media/global-health-indicators-powerbi.webp",
+    "hidden": true
   },
   {
     "slug": "sql-data-warehouse-course-project",

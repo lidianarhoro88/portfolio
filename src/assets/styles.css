@@ -436,3 +436,12 @@ table.mini tr.drop td{text-decoration:line-through;color:var(--faint)}
 
 @media (max-width:640px){.studio-card{display:none}.portrait-tag{top:auto;bottom:4%;left:0}.chip-float:nth-of-type(2){right:0}.chip-float:nth-of-type(3){left:0}}
 .studio-stat{display:flex;gap:12px;align-items:center}.studio-stat b{font-family:var(--serif);font-weight:500;font-size:2.4rem;line-height:1;color:var(--wine)}.studio-stat span{font-size:.78rem;color:var(--muted);line-height:1.4}.studio-bar{height:6px;border-radius:3px;background:var(--wine-tint);margin-top:12px;overflow:hidden}.studio-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--wine),var(--gold-2))}
+
+.article{max-width:70ch;font-size:1.04rem}
+.article p,.article li{color:var(--ink-2);line-height:1.75}
+.article h2{font-size:1.5rem;margin:2.2rem 0 .8rem}
+.article ul{padding-left:1.2rem;margin:0 0 1.2rem}.article li{margin:.35rem 0}
+.article pre{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow-x:auto;margin:1rem 0 1.4rem}
+.article pre code{font-family:var(--mono);font-size:.84rem;line-height:1.6;color:var(--ink);background:none;padding:0}
+.article code{font-family:var(--mono);font-size:.86em;background:var(--wine-tint);color:var(--wine);padding:1px 6px;border-radius:5px}
+.article strong{color:var(--ink);font-weight:600}
