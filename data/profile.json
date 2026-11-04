@@ -77,6 +77,22 @@
   },
   "credentials": [
     {
+      "title": "Data Engineer Associate",
+      "issuer": "DataCamp · Professional certification",
+      "date": "Nov 2026",
+      "area": "Data engineering",
+      "status": "Certified",
+      "url": "https://www.datacamp.com/certificate/DEA0010996904725"
+    },
+    {
+      "title": "Data Analyst Associate",
+      "issuer": "DataCamp · Professional certification",
+      "date": "Nov 2026",
+      "area": "Data analysis",
+      "status": "Certified",
+      "url": "https://www.datacamp.com/certificate/DAA0012131103348"
+    },
+    {
       "title": "Data Modeling in Power BI",
       "issuer": "Microsoft · Coursera",
       "date": "Jul 2026",
@@ -169,14 +185,14 @@
   "learning": [
     {
       "id": "datacamp",
-      "title": "SQL for data engineering: 4 courses completed",
+      "title": "Associate Data Engineer in SQL (career track)",
       "provider": "DataCamp",
       "status": "In progress",
       "tags": [
-        "Understanding Data Engineering",
-        "Introduction to SQL",
-        "Intermediate SQL",
-        "Joining Data in SQL"
+        "Database design",
+        "Data warehousing",
+        "PostgreSQL",
+        "Snowflake"
       ],
       "related": "pharma-distribution-dbt"
     },
@@ -347,10 +363,10 @@
       "href": "/projects/pharma-distribution-dbt/"
     },
     {
-      "label": "Studying",
-      "title": "SQL for data engineering on DataCamp",
-      "text": "Four courses done: Understanding Data Engineering, Introduction to SQL, Intermediate SQL and Joining Data in SQL. Next: relational database design.",
-      "href": "/learning/"
+      "label": "Certified",
+      "title": "DataCamp Data Engineer Associate and Data Analyst Associate",
+      "text": "Both earned in November 2026: timed exams plus practical exams in SQL and data cleaning. Next: finishing the Associate Data Engineer in SQL track.",
+      "href": "/credentials/"
     },
     {
       "label": "In progress",
