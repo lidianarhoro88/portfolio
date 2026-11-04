@@ -109,6 +109,15 @@
       "url": "https://www.coursera.org/account/accomplishments/verify/6HVJA0PXQRVG"
     },
     {
+      "title": "Data Analysis Using Excel and Power BI (Reporting), 90 hours",
+      "issuer": "Alaa Essam Academy",
+      "date": "May 2026",
+      "area": "Business intelligence",
+      "status": "Earned",
+      "url": "/cert-alaa-essam-data-analysis.webp",
+      "linkLabel": "View certificate"
+    },
+    {
       "title": "Business Process Modeling and Analysis",
       "issuer": "SAP · Coursera",
       "date": "Dec 2025",
@@ -230,16 +239,6 @@
         "Medallion"
       ],
       "related": "sql-data-warehouse-course-project"
-    },
-    {
-      "id": "pte",
-      "title": "PTE Core (English)",
-      "provider": "Pearson",
-      "status": "In progress",
-      "tags": [
-        "English"
-      ],
-      "related": ""
     }
   ],
   "posts": [
