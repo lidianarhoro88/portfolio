@@ -89,8 +89,7 @@ const header = cur => `<a class="skip" href="#main">Skip to content</a>${sprite}
   </nav>
   <button class="icon-btn search-btn" type="button" data-search aria-label="Find a project">${ico('search')}</button>
   <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">${ico('sun', 'icon sun')}${ico('moon', 'icon moon')}</button>
-  <a class="lang-switch" href="${arOf(cur)}" lang="ar" hreflang="ar">العربية</a>
-  <a class="status-badge nav-cta" href="/contact/" title="Let’s connect"><span class="status-dot" aria-hidden="true"></span>Open to work</a>
+  <a class="status-badge nav-cta" href="/contact/" title="Let’s connect"><span class="status-dot" aria-hidden="true"></span>Open to work ${ico('arrow')}</a>
   <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="Menu">${ico('menu')}</button>
 </div>
 <nav class="mobile-nav wrap" aria-label="Mobile">${[...site.nav, ...site.more, { label: 'Contact', href: '/contact/' }].map(l => navLink(l, cur)).join('')}</nav>
@@ -120,7 +119,7 @@ const footer = () => `<footer class="footer"><div class="wrap">
 </div></div>`;
 
 /* ---------- language helpers ---------- */
-const AR_PAGES = { '/': '/ar/', '/work/': '/ar/work/', '/about/': '/ar/about/', '/contact/': '/ar/contact/' };
+const AR_PAGES = {};
 const arOf = cur => AR_PAGES[cur] || '/ar/';
 const enOf = cur => Object.keys(AR_PAGES).find(k => AR_PAGES[k] === cur) || '/';
 const altLinks = cur => { const en = AR_PAGES[cur] ? cur : Object.keys(AR_PAGES).find(k => AR_PAGES[k] === cur); return en ? `<link rel="alternate" hreflang="en" href="${site.url}${en}"><link rel="alternate" hreflang="ar" href="${site.url}${AR_PAGES[en]}">` : ''; };
@@ -134,8 +133,6 @@ const layout = ({ title, desc = site.description, cur, body, lang = 'en' }) => `
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${site.url}/social-card.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;if(localStorage.getItem('paused')==='1')document.documentElement.classList.add('paused')}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700${lang === 'ar' ? '&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600' : ''}&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
 </head><body>${lang === 'ar' ? headerAr(cur) : header(cur)}<main id="main">${body}</main>${lang === 'ar' ? ctaAr() : cta()}${lang === 'ar' ? footerAr() : footer()}<script src="/assets/app.js" defer></script><script defer src="/_vercel/insights/script.js"></script></body></html>`;
 
@@ -181,7 +178,7 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
     <div class="hero-role">${esc(site.roleLine)}</div>
     <h1>From scattered systems to <em>clear answers.</em></h1>
     <p class="lede">Nine years of turning operational data into one trusted place: ETL pipelines in SQL Server and Python, star schemas, and Power BI dashboards that management actually uses.</p>
-    <div class="btns"><a class="btn btn-primary" href="/work/">Explore my work ${ico('arrow')}</a>${hasCv ? `<a class="btn" href="/resume.pdf" download>Download CV ${ico('download')}</a>` : `<a class="btn" href="/services/">Work with me</a>`}</div>
+    <div class="btns"><a class="btn btn-primary" href="/work/">Explore my work ${ico('arrow')}</a><a class="btn" href="/services/">Work with me</a></div>
     <div class="hero-meta"><span class="pin">${esc(site.location)} / ${esc(site.availability)}</span><button class="pause-btn" type="button" data-pause aria-pressed="false">${ico('pause')}<span class="label">Pause animation</span></button></div>
   </div>
   <div class="stage reveal" aria-label="Portrait and toolkit">
@@ -509,7 +506,7 @@ const footerAr = () => `<footer class="footer"><div class="wrap">
   </div>
   <div class="footer-base"><span>© ${year} ${esc(ar.name)}</span><span>${esc(ar.footer.tagline)}</span><a href="#main">${esc(ar.footer.top)}</a></div>
 </div></footer>` + footer().slice(footer().indexOf('<div class="modal"'));
-const pageAr = (p, o) => { pages[p] = layout({ ...o, cur: p, lang: 'ar' }); };
+const pageAr = () => {}; /* Arabic version switched off */
 const cardAr = p => { const t = ar.projects[p.slug] || { title: p.title, summary: p.summary }; return `<article class="card reveal">
   <a class="card-media" href="/projects/${p.slug}/" aria-label="${esc(t.title)}">${viz(p)}</a>
   <div class="card-body">
