@@ -92,7 +92,7 @@ const header = cur => `<a class="skip" href="#main">Skip to content</a>${sprite}
   <a class="status-badge nav-cta" href="/contact/" title="Let’s connect"><span class="status-dot" aria-hidden="true"></span>Open to work ${ico('arrow')}</a>
   <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="Menu">${ico('menu')}</button>
 </div>
-<nav class="mobile-nav wrap" aria-label="Mobile">${[...site.nav, ...site.more, { label: 'Contact', href: '/contact/' }].map(l => navLink(l, cur)).join('')}</nav>
+<nav class="mobile-nav wrap" aria-label="Mobile">${site.nav.slice(0, 3).map(l => navLink(l, cur)).join('')}${(() => { const rest = [...site.nav.slice(3), ...site.more, { label: 'Contact', href: '/contact/' }]; return `<details class="m-more"${rest.some(l => l.href === cur) ? ' open' : ''}><summary>More <span class="m-plus" aria-hidden="true">+</span></summary><div class="m-more-list">${rest.map(l => navLink(l, cur)).join('')}</div></details>`; })()}</nav>
 </header>`;
 
 const cta = () => `<section class="cta"><div class="wrap reveal"><div class="eyebrow">A question worth exploring?</div><h2>Let’s build something <em>reliable.</em></h2><a class="btn" href="/contact/">Start a conversation ${ico('arrow')}</a></div></section>`;

@@ -533,3 +533,12 @@ table.mini tr.drop td{text-decoration:line-through;color:var(--faint)}
   .header .mobile-nav.open{padding:8px 24px 20px}
   .header .mobile-nav.open a{padding:13px 2px}
 }
+
+/* phone menu: three links + More */
+.m-more summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:13px 2px;font-size:15px;color:var(--ink-2);border-bottom:1px solid var(--line)}
+.m-more summary::-webkit-details-marker{display:none}
+.m-more .m-plus{font-size:20px;line-height:1;color:var(--muted);transition:transform .2s}
+.m-more[open] .m-plus{transform:rotate(45deg)}
+.m-more[open] summary{color:var(--ink)}
+.header .mobile-nav.open .m-more-list a{padding:11px 2px 11px 16px;font-size:14px;color:var(--muted)}
+.header .mobile-nav.open .m-more-list a[aria-current="page"]{color:var(--wine)}
