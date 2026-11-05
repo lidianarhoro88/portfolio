@@ -177,7 +177,7 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
     <div class="hero-name">${esc(site.name)}</div>
     <div class="hero-role">${esc(site.roleLine)}</div>
     <h1>From scattered systems to <em>clear answers.</em></h1>
-    <p class="lede">Nine years of turning operational data into one trusted place: ETL pipelines in SQL Server and Python, star schemas, and Power BI dashboards that management actually uses.</p>
+    <p class="lede">I turn scattered operational data into reliable pipelines and reporting people can trust, using SQL, Python, dbt and Power BI. Most of my work is in pharmaceutical distribution and construction in Istanbul.</p>
     <div class="btns"><a class="btn btn-primary" href="/work/">Explore my work ${ico('arrow')}</a><a class="btn" href="/services/">Work with me</a></div>
     <div class="hero-meta"><span class="pin">${esc(site.location)} / ${esc(site.availability)}</span><button class="pause-btn" type="button" data-pause aria-pressed="false">${ico('pause')}<span class="label">Pause animation</span></button></div>
   </div>
@@ -241,8 +241,8 @@ page('/', { title: `${site.name} | ${site.role}`, body: `
 <section class="section"><div class="wrap split">
   <div class="photo-card reveal">${portrait()}</div>
   <div class="reveal"><div class="eyebrow"><b>The person</b> / The practice</div><h2>Systems background. <em>Data-first habits.</em></h2>
-    <p class="lede" style="margin-top:22px">My path runs from computer systems engineering and information coordination to data warehousing and BI roles in pharmaceutical distribution and construction in Istanbul.</p>
-    <p class="muted">I work across SQL Server, Python, PostgreSQL and Power BI, with SAP, Microsoft and Google credentials. Coordinating people and systems is part of the practice too.</p>
+    <p class="lede" style="margin-top:22px">I started in computer systems engineering and information coordination, which taught me that most data problems start as process problems. Today I build the pipelines, checks and reports that keep a business’s numbers consistent.</p>
+    <p class="muted">I work with SQL Server, PostgreSQL, Python, dbt and Power BI, and hold DataCamp’s Data Engineer Associate and Data Analyst Associate certifications.</p>
     <div class="btns" style="margin-top:26px"><a class="btn" href="/about/">More about my journey ${ico('arrow')}</a><a class="link" href="/resume/">Experience & education</a></div></div>
 </div></section>
 
@@ -350,7 +350,7 @@ dashboards.forEach(p => {
 /* ---------- ABOUT ---------- */
 const lenses = [
   { id: 'eng', label: 'Data engineering', title: 'A path from source files to a model people can trust.', q: 'What is the grain? Where can a record fail? Can every transformation be traced back to the raw file?', steps: [['Sources', 'Files, databases & ERP'], ['Bronze', 'Keep raw inputs as they arrived'], ['Silver', 'Clean keys, types & duplicates'], ['Gold', 'Facts, dimensions & grain'], ['Serve', 'A model reports can rely on']], rel: ['pharma-distribution-dbt', 'tcmb-fx-rates-pipeline'] },
-  { id: 'bi', label: 'BI & analytics', title: 'From a business question to a page someone actually uses.', q: 'Who reads this? Which decision does it change? Is every measure defined once?', steps: [['Question', 'The decision behind the report'], ['Model', 'Star schema & relationships'], ['Measures', 'DAX defined once, reused'], ['Design', 'One page, one story'], ['Handover', 'Documented logic']], rel: ['construction-cost-control', 'sales-profit-executive-dashboard'] },
+  { id: 'bi', label: 'BI & analytics', title: 'From a business question to a page someone actually uses.', q: 'Who reads this? Which decision does it change? Is every measure defined once?', steps: [['Question', 'The decision behind the report'], ['Model', 'Data model & relationships'], ['Measures', 'DAX defined once, reused'], ['Design', 'One page, one story'], ['Handover', 'Documented logic']], rel: ['construction-cost-control', 'sales-profit-executive-dashboard'] },
   { id: 'sys', label: 'Systems & coordination', title: 'Most data problems start as process problems.', q: 'Which system owns this record? Who changes it, and when? What does the team need to see?', steps: [['Process', 'How work actually flows'], ['Systems', 'ERP and tools that hold the data'], ['Requirements', 'What each team needs'], ['Alignment', 'Shared definitions'], ['Delivery', 'Coordinated rollout']], rel: ['invoice-intake-automation', 'logistics-analytics-sql-powerbi'] }
 ];
 const skillGroups = [
@@ -408,7 +408,7 @@ page('/recruiters/', { title: T('For hiring teams'), desc: `A 60-second overview
 <section class="page-head"><div class="wrap"><div class="eyebrow"><b>For hiring teams</b> / The 60-second overview</div><h1>The short version. <em>With evidence.</em></h1><p class="lede">${esc(site.role)} with an information systems background. Here is what I do, where to look first, and how to reach me.</p></div></section>
 <section class="section" style="padding-top:0"><div class="wrap"><div class="numbers">
   <div class="number"><span>Role</span><small>${esc(site.role)}</small></div>
-  <div class="number"><span>Experience</span><small>9+ years in information systems, data warehousing and BI</small></div>
+  <div class="number"><span>Experience</span><small>9+ years in information systems, data and reporting</small></div>
   <div class="number"><span>Based in</span><small>${esc(site.location)} · ${esc(site.availability)}</small></div>
   <div class="number"><span>Current position</span><small>${esc(profile.experience[0].role)}, ${esc(profile.experience[0].org)}</small></div>
   <div class="number"><span>Languages</span><small>${esc(profile.languages.join(' · '))}</small></div>

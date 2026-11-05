@@ -12,7 +12,7 @@
     "repo": "https://github.com/lidianarhoro88/pharma-distribution-dbt",
     "liveUrl": "https://lidianarhoro88.github.io/pharma-distribution-dbt/",
     "liveLabel": "dbt docs & lineage",
-    "summary": "Raw ERP extracts for a fictional Istanbul pharmaceutical wholesaler turned into a tested dbt star schema with an SCD Type 2 pharmacy dimension, OTIF delivery and expiry-loss marts. 54 nodes, 39 data tests, CI on every push.",
+    "summary": "Raw ERP extracts for a fictional Istanbul pharmaceutical wholesaler turned into tested dbt data models with an SCD Type 2 pharmacy dimension, OTIF delivery and expiry-loss marts. 54 nodes, 39 data tests, CI on every push.",
     "tools": [
       "dbt",
       "DuckDB",

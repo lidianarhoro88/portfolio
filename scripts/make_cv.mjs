@@ -25,7 +25,7 @@ const cvProjects = [
 ].map(([slug, line]) => ({ p: projects.find(x => x.slug === slug), line })).filter(x => x.p);
 
 const skills = [
-  ['Data engineering', 'ETL/ELT pipelines, dbt, dimensional modelling (star schema, SCD Type 2), Medallion architecture, incremental and idempotent loads, data quality testing'],
+  ['Data engineering', 'ETL/ELT pipelines, dbt, data modelling (dimensional models, SCD Type 2), Medallion architecture, incremental and idempotent loads, data quality testing'],
   ['Databases', 'SQL Server, PostgreSQL, DuckDB, MySQL, SQLite; Databricks SQL and Apache Spark (familiar)'],
   ['Programming and tools', 'SQL, Python (pandas), Git and GitHub, GitHub Actions (CI/CD), Bash'],
   ['BI and reporting', 'Power BI (DAX, Power Query), advanced Excel, dashboard design, report automation'],
@@ -54,7 +54,7 @@ ul{margin:3px 0 0;padding-left:14px}li{margin:1.5px 0}
 <div class="contact">${esc(site.location)} · <a href="mailto:${site.email}">${site.email}</a> · <a href="${site.linkedin}">linkedin.com/in/lidiana-houro</a> · <a href="https://github.com/${site.github}">github.com/${site.github}</a> · <a href="${site.url}">${site.url.replace('https://', '')}</a></div>
 <div class="rule"></div><div class="rule2"></div>
 <h2>Profile</h2>
-<p>Data engineer with more than nine years across information systems, data warehousing and business intelligence, mostly in pharmaceutical distribution and construction in Istanbul. I build ETL/ELT pipelines in SQL Server, Python and dbt, model data into tested star schemas, and deliver Power BI dashboards that management uses to track KPIs. I care about the parts that keep data trustworthy: data quality checks, access control, backups and queries that stay fast.</p>
+<p>I'm a Data Engineer who turns scattered operational data into reliable pipelines and reporting people can trust. I use SQL and Python to clean, validate and load data, build ELT workflows with dbt, and deliver analysis in Power BI. Most of my work has been in pharmaceutical distribution and construction in Istanbul, where testing, data quality checks and documentation are part of the job. A background in computer systems engineering and information coordination taught me that most data problems start as process problems.</p>
 <h2>Technical skills</h2>
 <div class="sk">${skills.map(([k, v]) => `<b>${k}</b><span>${v}</span>`).join('')}</div>
 <h2>Professional experience</h2>

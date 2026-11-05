@@ -1,13 +1,14 @@
 {
   "aboutIntro": "From office workflows to warehouses and dashboards, my work is connected by one habit: make the data agree before anyone makes a decision with it.",
   "aboutBody": [
-    "I’m a data engineer with more than nine years across information systems, data warehousing and business intelligence, mostly in pharmaceutical distribution and construction in Istanbul.",
-    "I build ETL pipelines in SQL Server and Python, model data into star schemas, and deliver Power BI dashboards that management uses to track KPIs. I care about the unglamorous parts too: access control, backups, data quality and queries that stay fast.",
-    "I studied Computer Systems Engineering at Cordoba Private University. My first roles were in information coordination, and moving from filing systems to databases taught me that most data problems start as process problems.",
+    "I’m a Data Engineer who turns scattered operational data into reliable pipelines and reporting people can trust. I use SQL and Python to extract, clean, validate and load data, build ELT workflows with dbt, and deliver analysis in Power BI with DAX and Power Query.",
+    "Most of my work has been in pharmaceutical distribution and construction in Istanbul, where data arrives from ERP systems, spreadsheets and PDFs and rarely agrees with itself. That is why I treat testing, data quality checks and documentation as part of the job rather than an afterthought.",
+    "My portfolio brings this together end to end: automated ingestion, tested data models and the dashboards built on them, each with real code and the decisions behind it.",
+    "I studied Computer Systems Engineering at Cordoba Private University and started out in information coordination. That background taught me that most data problems start as process problems, and it still shapes how I gather requirements and design solutions.",
     "Alongside my full-time work I run RD Group, a small digital-solutions business building websites, SEO and branding for international clients. My next step is going deeper into data engineering and AI, with a European master’s degree as the milestone."
   ],
   "focusTitle": "Current focus",
-  "focus": "Medallion pipelines (Raw, Silver, Gold), dimensional modelling, and moving from Power BI reporting toward Microsoft Fabric data engineering.",
+  "focus": "Building tested ELT pipelines with dbt, moving from Power BI reporting toward Microsoft Fabric, and preparing for a European master’s in data engineering.",
   "languages": [
     "Arabic (native)",
     "English (professional)"
@@ -42,7 +43,7 @@
       "place": "Istanbul, Türkiye",
       "points": [
         "Coordinated cross-functional IT and administrative projects, aligning business requirements with information-system deliverables.",
-        "Modelled star schemas with fact and dimension tables to centralise supply chain, procurement and CRM data.",
+        "Built reporting models that brought supply chain, procurement and CRM data into one place for analysis.",
         "Produced weekly and monthly performance reports in advanced Excel (PivotTables, Power Query) to surface operational bottlenecks."
       ]
     },
@@ -359,7 +360,7 @@
     {
       "label": "Building",
       "title": "Power BI report on the pharma dbt marts",
-      "text": "A three-page report (overview, delivery, expiry risk) on the tested star schema, reconciled to the warehouse before it is published.",
+      "text": "A three-page report (overview, delivery, expiry risk) on the tested dbt models, reconciled to the warehouse before it is published.",
       "href": "/projects/pharma-distribution-dbt/"
     },
     {
