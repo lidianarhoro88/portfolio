@@ -256,12 +256,13 @@
     "result": "A layered warehouse you can rebuild from scratch, with each transformation step in its own SQL script and a dashboard that reads from the curated layer.",
     "scope": "The dataset is a practice scenario designed for this project. Figures describe the scenario, not a real company.",
     "pages": [
-      "Sales overview",
-      "Branch comparison",
-      "Product performance"
+      "Sales dashboard"
     ],
     "files": [],
-    "image": "/project-media/coffee-shop-data-warehouse.webp"
+    "image": "/project-media/coffee-shop-data-warehouse.webp",
+    "liveUrl": "https://app.powerbi.com/view?r=eyJrIjoiNjY0MmJiZDQtNzMwYy00MzJlLWFkYjEtNzhjODhhYTA0Zjc0IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
+    "liveLabel": "Open Power BI report",
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiNjY0MmJiZDQtNzMwYy00MzJlLWFkYjEtNzhjODhhYTA0Zjc0IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
   },
   {
     "slug": "sales-profit-executive-dashboard",
@@ -347,12 +348,15 @@
     "result": "66% of shipments arrived on time, and four drivers, not specific cities, caused most of the delays. That moves the conversation from route planning to driver support.",
     "scope": "All records are synthetic, created for a fictional Turkish delivery company. The messiness is deliberate.",
     "pages": [
-      "On-time overview",
-      "Drivers & delays",
-      "Cities & routes"
+      "Dashboard",
+      "Operations",
+      "Fleet & Profit"
     ],
     "files": [],
-    "image": "/project-media/logistics-analytics-sql-powerbi.webp"
+    "image": "/project-media/logistics-analytics-sql-powerbi.webp",
+    "liveUrl": "https://app.powerbi.com/view?r=eyJrIjoiMzczMGRiOTMtZGJhMy00ZDc2LTgyM2UtZWYwOGFmZGZlMmY4IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
+    "liveLabel": "Open Power BI report",
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMzczMGRiOTMtZGJhMy00ZDc2LTgyM2UtZWYwOGFmZGZlMmY4IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
   },
   {
     "slug": "global-health-indicators-powerbi",
