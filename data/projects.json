@@ -47,7 +47,21 @@
     ],
     "files": [],
     "image": "/project-media/pharma-distribution-dbt.webp",
-    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMDIwMjY0NjEtMzQwNS00NjVmLTk1MGUtMWIzNmU5MTc1NjUwIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMDIwMjY0NjEtMzQwNS00NjVmLTk1MGUtMWIzNmU5MTc1NjUwIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
+    "shots": [
+      {
+        "src": "/project-media/shots/pharma-distribution-dbt-1.webp",
+        "caption": "Sales overview"
+      },
+      {
+        "src": "/project-media/shots/pharma-distribution-dbt-2.webp",
+        "caption": "Delivery performance"
+      },
+      {
+        "src": "/project-media/shots/pharma-distribution-dbt-3.webp",
+        "caption": "Expiry risk"
+      }
+    ]
   },
   {
     "slug": "construction-cost-control",
@@ -268,7 +282,13 @@
     "image": "/project-media/coffee-shop-data-warehouse.webp",
     "liveUrl": "https://app.powerbi.com/view?r=eyJrIjoiNjY0MmJiZDQtNzMwYy00MzJlLWFkYjEtNzhjODhhYTA0Zjc0IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
     "liveLabel": "Open Power BI report",
-    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiNjY0MmJiZDQtNzMwYy00MzJlLWFkYjEtNzhjODhhYTA0Zjc0IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiNjY0MmJiZDQtNzMwYy00MzJlLWFkYjEtNzhjODhhYTA0Zjc0IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
+    "shots": [
+      {
+        "src": "/project-media/shots/coffee-shop-data-warehouse-1.webp",
+        "caption": "Sales dashboard"
+      }
+    ]
   },
   {
     "slug": "sales-profit-executive-dashboard",
@@ -362,7 +382,21 @@
     "image": "/project-media/logistics-analytics-sql-powerbi.webp",
     "liveUrl": "https://app.powerbi.com/view?r=eyJrIjoiMzczMGRiOTMtZGJhMy00ZDc2LTgyM2UtZWYwOGFmZGZlMmY4IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
     "liveLabel": "Open Power BI report",
-    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMzczMGRiOTMtZGJhMy00ZDc2LTgyM2UtZWYwOGFmZGZlMmY4IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMzczMGRiOTMtZGJhMy00ZDc2LTgyM2UtZWYwOGFmZGZlMmY4IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
+    "shots": [
+      {
+        "src": "/project-media/shots/logistics-analytics-sql-powerbi-1.webp",
+        "caption": "Dashboard"
+      },
+      {
+        "src": "/project-media/shots/logistics-analytics-sql-powerbi-2.webp",
+        "caption": "Operations"
+      },
+      {
+        "src": "/project-media/shots/logistics-analytics-sql-powerbi-3.webp",
+        "caption": "Fleet & profit"
+      }
+    ]
   },
   {
     "slug": "global-health-indicators-powerbi",

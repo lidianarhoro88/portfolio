@@ -555,3 +555,14 @@ table.mini tr.drop td{text-decoration:line-through;color:var(--faint)}
 .story.has-pbi .facts .scope{flex:1 1 100%}
 @media (max-width:650px){.pbi-frame{aspect-ratio:4/3}}
 .pbi-frame+.caption{margin-top:12px}
+
+/* report screenshot gallery */
+.shots{display:grid;gap:12px;margin-bottom:18px}
+.shot-main{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.shot-main img{display:block;width:100%;height:auto}
+.shot-main figcaption{padding:10px 14px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.shot-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.shot-thumbs button{all:unset;cursor:pointer;display:grid;gap:6px;font-size:12px;color:var(--muted);border-radius:10px;padding:4px;border:1px solid transparent}
+.shot-thumbs button img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left;border-radius:8px;border:1px solid var(--line);background:#fff}
+.shot-thumbs button[aria-current="true"]{border-color:var(--wine);color:var(--ink)}
+.shot-thumbs button:focus-visible{outline:2px solid var(--wine);outline-offset:2px}

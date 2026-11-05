@@ -71,7 +71,7 @@
       if (e.key === 'Enter') { e.preventDefault(); location.href = $('a', items[sel]).href; }
     });
   }
-  $$('[data-search]').forEach(b => b.addEventListener('click', openSearch));
+  $$('[data-search]:not(.card)').forEach(b => b.addEventListener('click', openSearch));
 
   /* project preview */
   const pModal = $('#preview-modal');
@@ -80,12 +80,12 @@
   function showPreview() {
     const p = projects.find(x => x.slug === pList[pIdx]); if (!p) return;
     $('#preview-content').innerHTML = `
-      <div class="preview-lg">${p.vizHtml}</div>
+      ${p.galleryHtml || `<div class="preview-lg">${p.vizHtml}</div>`}
       <div class="card-cat">${esc(p.categoryLabel)}${p.status === 'progress' ? ' <span class="badge">In progress</span>' : ''}</div>
       <h3>${esc(p.title)}</h3>
       <p class="muted">${esc(p.summary)}</p>
       <div class="tags" style="margin:14px 0 20px">${p.tools.map(t => `<span>${esc(t)}</span>`).join('')}</div>
-      <div class="btns"><a class="btn btn-primary btn-sm" href="/projects/${p.slug}/">Follow the story</a>${p.repo ? `<a class="btn btn-sm" href="${p.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}${p.dashboard ? `<a class="btn btn-sm" href="/dashboards/${p.slug}/">Report preview</a>` : ''}</div>`;
+      <div class="btns"><a class="btn btn-primary btn-sm" href="/projects/${p.slug}/">Follow the story</a>${p.repo ? `<a class="btn btn-sm" href="${p.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}${p.dashboard ? `<a class="btn btn-sm" href="/dashboards/${p.slug}/">${p.galleryHtml ? 'Live report' : 'Report preview'}</a>` : ''}</div>`;
     $('#preview-count').textContent = `${pIdx + 1} / ${pList.length}`;
   }
   document.addEventListener('click', async e => {
@@ -203,3 +203,11 @@
   });
   $$('#contact-form [required]').forEach(f => f.addEventListener('input', () => { f.parentElement.querySelector('.err').textContent = ''; }));
 })();
+
+/* screenshot galleries */
+document.addEventListener('click', e => {
+  const b = e.target.closest('.shot-thumbs button'); if (!b) return;
+  const g = b.closest('[data-shots]'); const img = g.querySelector('.shot-main img'); const cap = g.querySelector('.shot-main figcaption');
+  img.src = b.dataset.src; img.alt = b.dataset.cap; cap.textContent = b.dataset.cap;
+  g.querySelectorAll('.shot-thumbs button').forEach(x => x.removeAttribute('aria-current')); b.setAttribute('aria-current', 'true');
+});
