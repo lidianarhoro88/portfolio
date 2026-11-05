@@ -297,7 +297,6 @@ page('/work/', { title: T('Work & GitHub repositories'), desc: `Browse ${site.sh
   <p class="note">New public repositories appear here automatically. Course projects keep their original author credit. Case studies and status are curated separately.</p>
 </div></section>` });
 
-const gallery = p => p.shots && p.shots.length ? `<div class="shots" data-shots><figure class="shot-main"><img src="${p.shots[0].src}" alt="${esc(p.title)}: ${esc(p.shots[0].caption)}" width="799" height="451" loading="lazy"><figcaption>${esc(p.shots[0].caption)}</figcaption></figure>${p.shots.length > 1 ? `<div class="shot-thumbs">${p.shots.map((s, i) => `<button type="button" data-src="${s.src}" data-cap="${esc(s.caption)}" aria-label="Show ${esc(s.caption)}"${i === 0 ? ' aria-current="true"' : ''}><img src="${s.src}" alt="" loading="lazy"><span>${esc(s.caption)}</span></button>`).join('')}</div>` : ''}</div>` : '';
 /* ---------- PROJECT PAGES ---------- */
 const related = p => projects.filter(x => x.slug !== p.slug).map(x => ({ x, s: x.tools.filter(t => p.tools.includes(t)).length + (x.category === p.category ? 1 : 0) })).sort((a, b) => b.s - a.s).slice(0, 3).map(({ x }) => x);
 projects.forEach(p => {
@@ -323,7 +322,7 @@ projects.forEach(p => {
     <div class="facts">${p.tools.map(t => `<div class="fact" style="display:flex;gap:12px;align-items:center">${logo(t)}<b>${esc(t)}</b></div>`).join('')}</div></div>
 
   <div class="story" id="story-result"><div><div class="eyebrow">03 / Open the work</div><h3>See the work. Inspect the details.</h3><p>${esc(p.result)}</p>
-    ${p.shots ? gallery(p) + `<p class="caption">Screenshots of the live Power BI report. Select a page to enlarge it.</p>` : `<div class="preview-lg">${viz(p, true)}</div><p class="caption">${esc(p.visual.steps.join(' → '))}</p>`}</div>
+    <div class="preview-lg">${viz(p, true)}</div><p class="caption">${esc(p.visual.steps.join(' → '))}</p></div>
     <div class="facts">${liveBtn(p)}${p.dashboard ? `<a class="btn" href="/dashboards/${p.slug}/">${p.pbiEmbed ? 'Open the live Power BI report' : 'Explore report preview'} ${ico('arrow')}</a>` : ''}${p.repo ? `<a class="btn" href="${p.repo}#readme" target="_blank" rel="noopener">Read the documentation ${ico('external')}</a><a class="btn" href="${p.repo}" target="_blank" rel="noopener">View the original source ${ico('external')}</a>` : '<p class="muted">The repository will be linked here once it is published.</p>'}</div></div>
 
   <div class="story" id="story-evidence"><div><div class="eyebrow">04 / The work behind the claim</div><h3>Choose where to look deeper.</h3>
@@ -654,7 +653,7 @@ for (const [p, html] of Object.entries(pages)) {
 fs.cpSync(path.join(ROOT, 'src', 'assets'), path.join(OUT, 'assets'), { recursive: true });
 if (fs.existsSync(path.join(ROOT, 'public'))) fs.cpSync(path.join(ROOT, 'public'), OUT, { recursive: true });
 
-fs.writeFileSync(path.join(OUT, 'projects.json'), JSON.stringify(projects.map(p => ({ slug: p.slug, title: p.title, summary: p.summary, tools: p.tools, status: p.status, repo: p.repo, dashboard: p.dashboard, galleryHtml: gallery(p), categoryLabel: catLabel(p.category), vizHtml: viz(p, true) }))));
+fs.writeFileSync(path.join(OUT, 'projects.json'), JSON.stringify(projects.map(p => ({ slug: p.slug, title: p.title, summary: p.summary, tools: p.tools, status: p.status, repo: p.repo, dashboard: p.dashboard, categoryLabel: catLabel(p.category), vizHtml: viz(p, true) }))));
 const idx = [
   ...projects.map(p => ({ title: p.title, url: `/projects/${p.slug}/`, type: catLabel(p.category), text: p.summary + ' ' + p.tools.join(' ') })),
   ...dashboards.map(p => ({ title: p.title + ' report', url: `/dashboards/${p.slug}/`, type: 'Dashboard', text: p.pages.join(' · ') + ' ' + p.tools.join(' ') })),
