@@ -8,7 +8,7 @@
     "kind": "original",
     "featured": true,
     "caseStudy": true,
-    "dashboard": false,
+    "dashboard": true,
     "repo": "https://github.com/lidianarhoro88/pharma-distribution-dbt",
     "liveUrl": "https://lidianarhoro88.github.io/pharma-distribution-dbt/",
     "liveLabel": "dbt docs & lineage",
@@ -17,7 +17,8 @@
       "dbt",
       "DuckDB",
       "SQL",
-      "Python"
+      "Python",
+      "Power BI"
     ],
     "visual": {
       "type": "architecture",
@@ -39,9 +40,14 @@
     ],
     "result": "On-time delivery 86.7 % and OTIF 77.3 %. The European-side warehouse is the problem (83.3 % on time against 89.9 %). The top 10 SKUs account for 44.9 % of the ₺290 K lost to expired stock.",
     "scope": "All pharmacies, products and transactions are synthetic, generated to behave like a real ERP export.",
-    "pages": [],
+    "pages": [
+      "Sales overview",
+      "Delivery",
+      "Expiry risk"
+    ],
     "files": [],
-    "image": "/project-media/pharma-distribution-dbt.webp"
+    "image": "/project-media/pharma-distribution-dbt.webp",
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMDIwMjY0NjEtMzQwNS00NjVmLTk1MGUtMWIzNmU5MTc1NjUwIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
   },
   {
     "slug": "construction-cost-control",
