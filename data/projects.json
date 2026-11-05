@@ -365,6 +365,98 @@
     "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMzczMGRiOTMtZGJhMy00ZDc2LTgyM2UtZWYwOGFmZGZlMmY4IiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
   },
   {
+    "slug": "sunset-haven-hotel-powerbi",
+    "title": "Sunset Haven Hotel Performance",
+    "eyebrow": "Hospitality / Course assignment",
+    "category": "bi",
+    "status": "done",
+    "kind": "course",
+    "featured": false,
+    "caseStudy": false,
+    "dashboard": true,
+    "repo": null,
+    "summary": "A Power BI report on 2,000 bookings for a fictional hotel chain: cancellations by branch, booking channel and room type, guest satisfaction, and how much revenue the cancellations cost.",
+    "tools": [
+      "Power BI",
+      "DAX",
+      "Power Query"
+    ],
+    "visual": {
+      "type": "dashboard",
+      "steps": [
+        "Bookings",
+        "Cancellations",
+        "Satisfaction",
+        "Revenue lost"
+      ]
+    },
+    "question": "Where does the hotel lose revenue to cancellations, and does guest satisfaction explain it?",
+    "approach": [
+      "Cleaned the booking data in Power Query and added a date table.",
+      "Wrote DAX measures for potential revenue, actual revenue, revenue lost and cancellation rate.",
+      "Compared cancellation rate and average satisfaction by branch, booking channel and room type.",
+      "Laid the report out as KPI cards on the left and the breakdowns on a single page."
+    ],
+    "result": "295 of 2,000 bookings were cancelled, costing 675K of 4.63M in potential revenue. The Beachfront branch and single rooms had the highest cancellation rates, while satisfaction stayed flat at about 5.3 across room types, so satisfaction alone does not explain the cancellations.",
+    "scope": "Training dataset supplied by the course. Figures describe a fictional hotel.",
+    "credit": "Built as a course assignment in the Alaa Essam Data Analysis (Excel and Power BI) program. The dataset was provided by the course; the report design, model and measures are my own work.",
+    "pages": [
+      "Draft layout",
+      "Dashboard"
+    ],
+    "files": [],
+    "image": "/project-media/sunset-haven-hotel-powerbi.webp",
+    "liveUrl": "https://app.powerbi.com/view?r=eyJrIjoiNzM4OWExZWItYWFmMy00YzAzLTk4MjYtN2VkNTI4YTM0Y2RjIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
+    "liveLabel": "Open Power BI report",
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiNzM4OWExZWItYWFmMy00YzAzLTk4MjYtN2VkNTI4YTM0Y2RjIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
+  },
+  {
+    "slug": "skylink-airways-powerbi",
+    "title": "SkyLink Airways Operations",
+    "eyebrow": "Aviation / Course assignment",
+    "category": "bi",
+    "status": "done",
+    "kind": "course",
+    "featured": false,
+    "caseStudy": false,
+    "dashboard": true,
+    "repo": null,
+    "summary": "A three-page Power BI report for a fictional airline: delays by route, aircraft and season, cancellations by route, passenger satisfaction, and how loyalty members book and spend.",
+    "tools": [
+      "Power BI",
+      "DAX",
+      "Power Query"
+    ],
+    "visual": {
+      "type": "dashboard",
+      "steps": [
+        "Operations",
+        "Passenger satisfaction",
+        "Loyalty & promotions"
+      ]
+    },
+    "question": "Which routes, aircraft and seasons drive delays and cancellations, and do loyalty members behave differently from other passengers?",
+    "approach": [
+      "Prepared the flight data in Power Query and grouped delays into categories (on time, minor, moderate, severe).",
+      "Built DAX measures for average delay, cancellation rate, on-time rate, ticket price and revenue.",
+      "Designed three pages: operations, passenger satisfaction by cabin class and age group, and loyalty versus non-loyalty bookings.",
+      "Added synced slicers for cabin class, origin, season, delay category and loyalty status."
+    ],
+    "result": "Average delay across 2,000 flights was 143 minutes with a 9% cancellation rate. Delays peak in winter, and the Boeing 737 has the highest average delay of the four aircraft types.",
+    "scope": "Training dataset supplied by the course. Figures describe a fictional airline.",
+    "credit": "Built as a course assignment in the Alaa Essam Data Analysis (Excel and Power BI) program. The dataset was provided by the course; the report design, model and measures are my own work.",
+    "pages": [
+      "Operations Overview",
+      "Passenger Satisfaction",
+      "Loyalty & Promotions"
+    ],
+    "files": [],
+    "image": "/project-media/skylink-airways-powerbi.webp",
+    "liveUrl": "https://app.powerbi.com/view?r=eyJrIjoiNmVlMWZmYmYtZDZmNC00NzM3LTk4YzEtMzBkN2E5OWU5M2IxIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9",
+    "liveLabel": "Open Power BI report",
+    "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiNmVlMWZmYmYtZDZmNC00NzM3LTk4YzEtMzBkN2E5OWU5M2IxIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
+  },
+  {
     "slug": "global-health-indicators-powerbi",
     "title": "Global Health Indicators Report",
     "eyebrow": "Public data / Power BI",

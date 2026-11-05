@@ -166,7 +166,7 @@ const caseStudies = projects.filter(p => p.caseStudy);
 const inProgressCourses = profile.learning.filter(l => l.status === 'In progress');
 const toolsAll = [...new Set(projects.flatMap(p => p.tools))];
 const liveBtn = (p, primary = false) => p.liveUrl ? `<a class="btn${primary ? ' btn-primary' : ''}" href="${p.liveUrl}" target="_blank" rel="noopener">${esc(p.liveLabel || 'Live demo')} ${ico('external')}</a>` : '';
-const sourceBtn = p => p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Source on GitHub ${ico('external')}</a>` : `<span class="btn" aria-disabled="true" style="opacity:.6;cursor:default">Repository coming soon</span>`;
+const sourceBtn = p => p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Source on GitHub ${ico('external')}</a>` : p.kind === 'course' ? '' : `<span class="btn" aria-disabled="true" style="opacity:.6;cursor:default">Repository coming soon</span>`;
 
 /* ---------- HOME ---------- */
 const exRows = [['O-101', 'Kadıköy', 120, ''], ['O-102', 'Beşiktaş', 95, ''], ['O-102', 'Beşiktaş', 95, 'dup'], ['O-103', 'Kadıköy', 80, ''], ['O-104', 'TEST', 999, 'test'], ['O-105', 'Şişli', 140, '']];
@@ -306,7 +306,7 @@ projects.forEach(p => {
   <a class="back" href="/work/">${ico('back')} All work</a>
   <div class="eyebrow"><b>${esc(p.eyebrow)}</b>${p.status === 'progress' ? '<span class="tag">In progress</span>' : ''}${p.kind === 'course' ? '<span class="tag">Course project</span>' : ''}</div>
   <h1>${esc(p.title)}</h1><p class="lede">${esc(p.summary)}</p>
-  <div class="btns" style="margin-top:28px"><a class="btn btn-primary" href="#project-story">Follow the project story ${ico('arrow')}</a>${liveBtn(p)}${sourceBtn(p)}${p.dashboard ? `<a class="btn" href="/dashboards/${p.slug}/">${p.pbiEmbed ? 'Live Power BI report' : 'Report preview'}</a>` : ''}<button class="btn copy-btn" type="button" data-copy>${ico('copy')}<span class="label">Copy page link</span></button></div>
+  <div class="btns" style="margin-top:28px"><a class="btn btn-primary" href="#project-story">Follow the project story ${ico('arrow')}</a>${p.pbiEmbed && p.liveUrl === p.pbiEmbed ? '' : liveBtn(p)}${sourceBtn(p)}${p.dashboard ? `<a class="btn" href="/dashboards/${p.slug}/">${p.pbiEmbed ? 'Live Power BI report' : 'Report preview'}</a>` : ''}<button class="btn copy-btn" type="button" data-copy>${ico('copy')}<span class="label">Copy page link</span></button></div>
 </div></section>
 <section id="project-story"><div class="wrap">
   <div class="eyebrow"><b>The project</b> / Follow the thread</div><h2>A question. A process. <em>Work you can explore.</em></h2>
@@ -327,7 +327,7 @@ projects.forEach(p => {
 
   <div class="story" id="story-evidence"><div><div class="eyebrow">04 / The work behind the claim</div><h3>Choose where to look deeper.</h3>
     ${p.files.length ? `<div data-file-filter><label class="field" style="margin-bottom:12px">Find a source file<input type="search"></label><div class="chips" style="margin-bottom:14px">${['all', 'doc', 'code', 'report'].map((t, i) => `<button class="chip" type="button" data-type="${t}" aria-pressed="${i === 0}">${['All files', 'Documentation', 'Code & configuration', 'Reports & models'][i]}</button>`).join('')}</div></div><ul class="list-rows" style="list-style:none;padding:0">${p.files.map(f => `<li data-type="${f.type}" class="row"><a class="link" href="${p.repo}/blob/main/${f.path}" target="_blank" rel="noopener">${esc(f.path)}</a><small>${esc(f.type.toUpperCase())}</small></li>`).join('')}</ul>`
-      : `<p>${p.repo ? 'Every script, model and note lives in the repository. Open it to inspect the full history of the build.' : 'Source files will be linked here as soon as the repository is public.'}</p>`}
+      : `<p>${p.repo ? 'Every script, model and note lives in the repository. Open it to inspect the full history of the build.' : (p.kind === 'course' ? 'This is a course assignment, so there is no repository. Open the live Power BI report to explore the model and every page.' : 'Source files will be linked here as soon as the repository is public.')}</p>`}
     <div class="scope"><b>Context & scope</b>${esc(p.scope)}</div></div>
     <div>${gh ? `<div class="gh-live" data-gh-repo="${gh}"><div class="eyebrow" style="margin:0">Latest from GitHub</div><b data-gh-updated>Checking the repository…</b><p class="muted" data-gh-desc style="margin:0"></p><small data-gh-meta></small><a class="link" href="${p.repo}/commits" target="_blank" rel="noopener">Explore source changes ${ico('external')}</a></div>` : ''}</div></div>
 </div></section>
