@@ -89,6 +89,7 @@ const header = cur => `<a class="skip" href="#main">Skip to content</a>${sprite}
   </nav>
   <button class="icon-btn search-btn" type="button" data-search aria-label="Find a project">${ico('search')}</button>
   <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">${ico('sun', 'icon sun')}${ico('moon', 'icon moon')}</button>
+  ${cur === '/' ? '<a class="lang-switch" href="/tr/" lang="tr" hreflang="tr">TR</a>' : ''}
   <a class="status-badge nav-cta" href="/contact/" title="Let’s connect"><span class="status-dot" aria-hidden="true"></span>Open to work ${ico('arrow')}</a>
   <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="Menu">${ico('menu')}</button>
 </div>
@@ -122,7 +123,7 @@ const footer = () => `<footer class="footer"><div class="wrap">
 const AR_PAGES = {};
 const arOf = cur => AR_PAGES[cur] || '/ar/';
 const enOf = cur => Object.keys(AR_PAGES).find(k => AR_PAGES[k] === cur) || '/';
-const altLinks = cur => { const en = AR_PAGES[cur] ? cur : Object.keys(AR_PAGES).find(k => AR_PAGES[k] === cur); return en ? `<link rel="alternate" hreflang="en" href="${site.url}${en}"><link rel="alternate" hreflang="ar" href="${site.url}${AR_PAGES[en]}">` : ''; };
+const altLinks = cur => { if (cur === '/' || cur === '/tr/') return `<link rel="alternate" hreflang="en" href="${site.url}/"><link rel="alternate" hreflang="tr" href="${site.url}/tr/">`; const en = AR_PAGES[cur] ? cur : Object.keys(AR_PAGES).find(k => AR_PAGES[k] === cur); return en ? `<link rel="alternate" hreflang="en" href="${site.url}${en}"><link rel="alternate" hreflang="ar" href="${site.url}${AR_PAGES[en]}">` : ''; };
 
 const layout = ({ title, desc = site.description, cur, body, lang = 'en' }) => `<!doctype html><html lang="${lang}"${lang === 'ar' ? ' dir="rtl"' : ''}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="${site.themeColor}">
@@ -134,7 +135,7 @@ const layout = ({ title, desc = site.description, cur, body, lang = 'en' }) => `
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;if(localStorage.getItem('paused')==='1')document.documentElement.classList.add('paused')}catch(e){}</script>
 <link rel="stylesheet" href="/assets/styles.css">
-</head><body>${lang === 'ar' ? headerAr(cur) : header(cur)}<main id="main">${body}</main>${lang === 'ar' ? ctaAr() : cta()}${lang === 'ar' ? footerAr() : footer()}<script src="/assets/app.js" defer></script><script defer src="/_vercel/insights/script.js"></script></body></html>`;
+</head><body>${lang === 'ar' ? headerAr(cur) : lang === 'tr' ? headerTr(cur) : header(cur)}<main id="main">${body}</main>${lang === 'ar' ? ctaAr() : lang === 'tr' ? ctaTr() : cta()}${lang === 'ar' ? footerAr() : lang === 'tr' ? footerTr() : footer()}<script src="/assets/app.js" defer></script><script defer src="/_vercel/insights/script.js"></script></body></html>`;
 
 const pages = {};
 const page = (p, o) => { pages[p] = layout({ ...o, cur: p }); };
@@ -577,6 +578,72 @@ pageAr('/ar/contact/', { title: `تواصل | ${ar.name}`, desc: ar.contact.lede
   <div class="fact"><small>LinkedIn</small><b><a class="link" href="${site.linkedin}" target="_blank" rel="noopener">${esc(ar.contact.profile)}</a></b></div>
   <div class="fact"><small>GitHub</small><b><a class="link" href="${ghUrl}" target="_blank" rel="noopener" dir="ltr">github.com/${esc(site.github)}</a></b></div>
 </div></div></section>` });
+
+/* ---------- TURKISH (home page only) ---------- */
+const tr = read('tr.json');
+const headerTr = cur => `<a class="skip" href="#main">İçeriğe geç</a>${sprite}
+<header class="header"><div class="nav-shell wrap">
+  <a class="brand" href="/tr/" aria-label="Ana sayfa"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>${esc(site.brand)}<span class="brand-dot">.</span></span></a>
+  <nav class="nav" aria-label="Ana menü">${tr.nav.map(l => navLink(l, cur)).join('')}</nav>
+  <button class="icon-btn push" type="button" data-theme-toggle aria-label="Temayı değiştir">${ico('sun', 'icon sun')}${ico('moon', 'icon moon')}</button>
+  <a class="lang-switch" href="/" lang="en" hreflang="en">EN</a>
+  <a class="status-badge nav-cta" href="/contact/"><span class="status-dot" aria-hidden="true"></span>${esc(tr.openToWork)} ${ico('arrow')}</a>
+  <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="Menü">${ico('menu')}</button>
+</div>
+<nav class="mobile-nav wrap" aria-label="Mobil menü">${tr.nav.map(l => navLink(l, cur)).join('')}<a href="/" lang="en">English</a></nav>
+</header>`;
+const ctaTr = () => `<section class="cta"><div class="wrap reveal"><div class="eyebrow">${esc(tr.cta.eyebrow)}</div><h2>${tr.cta.title}</h2><a class="btn" href="/contact/">${esc(tr.cta.button)} ${ico('arrow')}</a></div></section>`;
+const footerTr = () => `<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><a class="brand" href="/tr/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>${esc(site.brand)}<span class="brand-dot">.</span></span></a><p class="muted" style="margin-top:14px">${esc(tr.footer.tagline)}</p><div class="eyebrow" style="margin:0">${esc(tr.location)} · ${esc(tr.availability)}</div></div>
+    <nav class="footer-links" aria-label="Bağlantılar">${tr.nav.map(l => `<a href="${l.href}">${esc(l.label)}</a>`).join('')}<a href="/" lang="en">${esc(tr.footer.english)}</a></nav>
+    <div class="footer-social"><a href="${ghUrl}" target="_blank" rel="noopener">GitHub</a><a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:${site.email}">${esc(site.email)}</a></div>
+  </div>
+  <div class="footer-base"><span>© ${year} ${esc(site.name)}</span><span>${esc(tr.footer.tagline)}</span><a href="#main">${esc(tr.footer.top)}</a></div>
+</div></footer>` + footer().slice(footer().indexOf('<div class="modal"'));
+const cardTr = p => { const t = tr.projects[p.slug] || { title: p.title, summary: p.summary }; return `<article class="card reveal">
+  <a class="card-media" href="/projects/${p.slug}/" aria-label="${esc(t.title)}">${viz(p)}</a>
+  <div class="card-body">
+    <div class="card-cat">${esc(tr.categories[p.category] || '')}</div>
+    <h3><a href="/projects/${p.slug}/">${esc(t.title)}</a></h3>
+    <p>${esc(t.summary)}</p>
+    <div class="tags">${p.tools.slice(0, 4).map(x => `<span>${esc(x)}</span>`).join('')}</div>
+    <div class="card-links"><a href="/projects/${p.slug}/">${esc(tr.work.story)} ${ico('arrow')}</a>${p.liveUrl ? `<a class="muted" href="${p.liveUrl}" target="_blank" rel="noopener">${esc(tr.work.live)}</a>` : ''}${p.repo ? `<a class="muted" href="${p.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}</div>
+  </div></article>`; };
+const headTr = (eyebrow, title, text) => `<div class="section-head reveal"><div><div class="eyebrow">${eyebrow}</div><h2>${title}</h2></div><div>${text ? `<p>${esc(text)}</p>` : ''}</div></div>`;
+pages['/tr/'] = layout({ cur: '/tr/', lang: 'tr', title: `${site.name} | Veri Mühendisi`, desc: 'Lidiana Houro, İstanbul’da veri mühendisi. Dağınık operasyonel verileri SQL, Python, dbt ve Power BI ile güvenilir veri hatlarına ve raporlara dönüştürüyorum.', body: `
+<section class="hero"><div class="wrap hero-grid">
+  <div class="reveal">
+    <div class="hero-name" lang="en">${esc(site.name)}</div>
+    <div class="hero-role">${esc(tr.roleLine)}</div>
+    <h1>${tr.hero.title}</h1>
+    <p class="lede">${esc(tr.hero.lede)}</p>
+    <div class="btns"><a class="btn btn-primary" href="/work/">${esc(tr.hero.primary)} ${ico('arrow')}</a><a class="btn" href="/contact/">${esc(tr.hero.secondary)}</a></div>
+    <div class="hero-meta"><span class="pin">${esc(tr.location)} / ${esc(tr.availability)}</span></div>
+  </div>
+  <div class="stage reveal" aria-label="Portre">
+    <div class="portrait-line" aria-hidden="true"></div>
+    <div class="portrait">${portrait()}</div>
+    <div class="portrait-tag">${esc(tr.hero.tag)}<b>${esc(site.initials)} · ${esc(site.short)}</b></div>
+    ${['SQL', 'Python', 'Power BI'].map(t => `<span class="chip-float">${logo(t)}${esc(t)}</span>`).join('')}
+  </div>
+</div>
+<div class="wrap"><div class="hero-ribbon">${esc(tr.hero.ribbon)}</div></div></section>
+<section class="toolkit" aria-label="${esc(tr.toolkit)}"><div class="wrap toolkit-row"><span class="toolkit-label">${esc(tr.toolkit)}</span>
+<div class="marquee"><div class="marquee-track">${[...site.toolkit, ...site.toolkit].map(t => `<span class="tool">${logo(t)}${esc(t)}</span>`).join('')}</div></div></div></section>
+<section class="section tight"><div class="wrap">
+  <div class="disciplines reveal"><div>${esc(tr.disciplines.intro)}</div>${tr.disciplines.items.map(d => `<a href="${d.href}"><span>${esc(d.k)}</span><b>${esc(d.b)}</b></a>`).join('')}</div>
+  <div class="recruiter-strip reveal"><b>${esc(tr.recruiter.q)}</b><a class="link" href="/recruiters/">${esc(tr.recruiter.link)} ${ico('arrow')}</a></div>
+</div></section>
+<section class="section"><div class="wrap">
+  ${headTr(esc(tr.work.eyebrow), tr.work.title, tr.work.text)}
+  <div class="grid grid-3">${featured.map(cardTr).join('')}</div>
+  <div class="section-foot"><span></span><a class="btn" href="/work/">${esc(tr.work.all)} ${ico('arrow')}</a></div>
+</div></section>
+<section class="section band"><div class="wrap">
+  ${headTr(esc(tr.now.eyebrow), tr.now.title, '')}
+  <div class="building">${tr.now.items.map(n => `<a class="build-card reveal" href="${n.href}"><span class="badge" style="align-self:flex-start">${esc(n.label)}</span><h3>${esc(n.title)}</h3><p class="muted" style="margin:0">${esc(n.text)}</p><span class="link">${ico('arrow')}</span></a>`).join('')}</div>
+</div></section>` });
 
 for (const [p, html] of Object.entries(pages)) {
   const file = p === '/404' ? path.join(OUT, '404.html') : path.join(OUT, p, 'index.html');

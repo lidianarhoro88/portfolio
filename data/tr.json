@@ -1,0 +1,148 @@
+{
+  "nav": [
+    {
+      "label": "Ana Sayfa",
+      "href": "/tr/"
+    },
+    {
+      "label": "Projeler",
+      "href": "/work/"
+    },
+    {
+      "label": "Panolar",
+      "href": "/dashboards/"
+    },
+    {
+      "label": "Hakkımda",
+      "href": "/about/"
+    },
+    {
+      "label": "İletişim",
+      "href": "/contact/"
+    }
+  ],
+  "openToWork": "Yeni fırsatlara açığım",
+  "roleLine": "Veri Mühendisliği · Veri Ambarı · İş Zekâsı",
+  "location": "İstanbul, Türkiye",
+  "availability": "Uzaktan iş birliğine açık",
+  "hero": {
+    "title": "Dağınık sistemlerden <em>net cevaplara.</em>",
+    "lede": "Dağınık operasyonel verileri SQL, Python, dbt ve Power BI ile güvenilir veri hatlarına ve raporlara dönüştürüyorum. Deneyimimin büyük kısmı İstanbul’da ilaç dağıtımı ve inşaat sektörlerinde.",
+    "primary": "Projeleri inceleyin",
+    "secondary": "Birlikte çalışalım",
+    "tag": "Modellerin arkasındaki kişi",
+    "ribbon": "Yapı. Bağlam. Netlik."
+  },
+  "toolkit": "Temel araçlarım",
+  "disciplines": {
+    "intro": "Birbiriyle bağlantılı üç alanda bir portföy.",
+    "items": [
+      {
+        "k": "01 / Mühendislik",
+        "b": "Veri ambarları ve veri hatları",
+        "href": "/work/?category=engineering"
+      },
+      {
+        "k": "02 / Analiz",
+        "b": "Raporlar ve panolar",
+        "href": "/dashboards/"
+      },
+      {
+        "k": "03 / Koordinasyon",
+        "b": "Sistemler ve projeler",
+        "href": "/resume/"
+      }
+    ]
+  },
+  "recruiter": {
+    "q": "Aklınızda bir pozisyon ya da proje mi var?",
+    "link": "60 saniyelik özet"
+  },
+  "work": {
+    "eyebrow": "Seçilmiş çalışmalar",
+    "title": "Ham tablolardan <em>işe yarar sonuçlara.</em>",
+    "text": "Veri ambarları, veri hatları ve panolar; her biri gerçek bir GitHub deposu ve belgelenmiş kararlarla. Proje detay sayfaları İngilizcedir.",
+    "story": "Projenin hikâyesi",
+    "live": "Canlı",
+    "all": "Tüm projeler"
+  },
+  "now": {
+    "eyebrow": "Şu sıralar",
+    "title": "Sormaya devam ediyorum. <em>Gelişmeye de.</em>",
+    "items": [
+      {
+        "label": "Geliştiriyorum",
+        "title": "İlaç dağıtımı dbt modelleri üzerinde Power BI raporu",
+        "text": "Genel bakış, teslimat ve son kullanma tarihi riski sayfalarından oluşan bir rapor; yayınlanmadan önce rakamlar veri ambarıyla karşılaştırılarak doğrulanıyor.",
+        "href": "/projects/pharma-distribution-dbt/"
+      },
+      {
+        "label": "Sertifikalı",
+        "title": "DataCamp Data Engineer Associate ve Data Analyst Associate",
+        "text": "İkisini de Kasım 2026’da aldım: süreli sınavların yanı sıra SQL ve veri temizleme üzerine uygulamalı sınavlar.",
+        "href": "/credentials/"
+      },
+      {
+        "label": "Devam ediyor",
+        "title": "SQL Veri Ambarı (kurs projesi)",
+        "text": "Data With Baraa kursunu takip ederek SQL Server üzerinde Bronze, Silver ve Gold katmanlı bir veri ambarı.",
+        "href": "/projects/sql-data-warehouse-course-project/"
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Keşfetmeye değer bir soru mu var?",
+    "title": "Güvenilir bir şey <em>inşa edelim.</em>",
+    "button": "Konuşmaya başlayalım"
+  },
+  "footer": {
+    "tagline": "Düzenli veri. Sağlam kararlar.",
+    "english": "English version",
+    "top": "Başa dön ↑"
+  },
+  "categories": {
+    "engineering": "Veri mühendisliği",
+    "bi": "İş zekâsı ve analitik",
+    "automation": "Otomasyon",
+    "apps": "Uygulamalar ve araçlar",
+    "learning": "Öğrenme ve kaynaklar"
+  },
+  "projects": {
+    "pharma-distribution-dbt": {
+      "title": "İlaç Dağıtımı Analitiği · dbt ve DuckDB",
+      "summary": "İstanbul’daki kurgusal bir ecza deposunun ham ERP verileri, eczaneler için SCD Type 2 geçmişi ve 39 veri testiyle desteklenen dbt modellerine dönüştürüldü. Analiz, Avrupa yakasındaki deponun siparişlerin yalnızca %83’ünü zamanında teslim ettiğini ortaya koydu."
+    },
+    "construction-cost-control": {
+      "title": "İnşaat Maliyet Kontrolü · Kazanılmış Değer",
+      "summary": "İstanbul’daki altı inşaat projesi için DuckDB üzerinde SQL ile kurulan kazanılmış değer (EVM) modeli ve canlı pano. Çelik fiyatları nedeniyle bütçeyi aşan bir projeyi, takvimin gerisinde kalan bir projeden ayırt ediyor."
+    },
+    "tcmb-fx-rates-pipeline": {
+      "title": "TCMB Döviz Kuru Veri Hattı",
+      "summary": "Türkiye Cumhuriyet Merkez Bankası’nın günlük kur bültenini her iş günü GitHub Actions üzerinde, sunucu olmadan DuckDB’ye yükleyen artımlı bir veri hattı. Resmî tatilleri, yeniden denemeleri ve kalite kontrollerini yönetiyor ve canlı bir panoyu güncelliyor."
+    },
+    "invoice-intake-automation": {
+      "title": "Fatura Kabul Otomasyonu",
+      "summary": "Tedarikçilerden gelen PDF faturaları okuyan, tedarikçi ve satın alma siparişi verileriyle 14 kurala göre doğrulayan, uygun olanları kaydedip diğerlerini gerekçesiyle birlikte incelemeye gönderen bir Python veri hattı."
+    },
+    "csv-data-profiler": {
+      "title": "CSV Veri Kalitesi Profilleyici",
+      "summary": "pip ile kurulabilen bir komut satırı aracı: CSV veya Excel dosyalarında sütun tiplerini belirler, tekrarlanan kayıtları ve tutarsız etiketleri bulur, bir kalite puanı ve HTML raporu üretir. CI süreçlerinde kalite kapısı olarak da kullanılabilir."
+    },
+    "coffee-shop-data-warehouse": {
+      "title": "Kahve Zinciri Veri Ambarı",
+      "summary": "Bir kahve zinciri için PostgreSQL üzerinde sıfırdan kurulan veri ambarı: dağınık ham veriler Bronze, Silver ve Gold katmanlarından geçerek etkileşimli bir Power BI panosuna ulaşıyor."
+    },
+    "sales-profit-executive-dashboard": {
+      "title": "Yönetici Satış ve Kârlılık Panosu",
+      "summary": "İki yıllık 500 sipariş üzerine kurulu, tek dosyalık etkileşimli pano: her filtreyle yeniden hesaplanan yedi KPI, yedi grafik ve kendini güncelleyen bir içgörü paneli."
+    },
+    "logistics-analytics-sql-powerbi": {
+      "title": "Lojistik Performans Analitiği",
+      "summary": "Kurgusal bir Türk teslimat şirketi için SQL Server üzerinde katmanlı bir veri hattı ile zamanında teslim oranını, başarısız teslimatları ve sürücü performansını gösteren bir Power BI raporu."
+    },
+    "sql-data-warehouse-course-project": {
+      "title": "SQL Veri Ambarı (kurs projesi)",
+      "summary": "Data With Baraa kursu kapsamında, katmanlı tasarımı baştan sona uygulamak için SQL Server üzerinde kurulan rehberli veri ambarı."
+    }
+  }
+}
