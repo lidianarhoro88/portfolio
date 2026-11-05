@@ -35,13 +35,13 @@ const skills = [
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 ${font('Serif', 'source-serif-4-latin-400-normal.woff2', 400)}${font('Serif', 'source-serif-4-latin-600-normal.woff2', 600)}
 ${font('Sans', 'plus-jakarta-sans-latin-400-normal.woff2', 400)}${font('Sans', 'plus-jakarta-sans-latin-500-normal.woff2', 500)}${font('Sans', 'plus-jakarta-sans-latin-600-normal.woff2', 600)}${font('Sans', 'plus-jakarta-sans-latin-700-normal.woff2', 700)}
-@page{size:A4;margin:14mm 15mm 13mm}
+@page{size:A4;margin:12mm 15mm 11mm}
 *{box-sizing:border-box}body{margin:0;font:9.4pt/1.45 Sans,sans-serif;color:#2A1A20}
 h1{font:600 25pt/1 Serif,serif;margin:0;letter-spacing:-.01em}h1 span{color:#5C2E3E}
 .role{font:600 10.5pt Sans;color:#9A7633;margin:5px 0 7px;letter-spacing:.02em}
 .contact{font-size:8.6pt;color:#6E5A61}.contact a{color:#5C2E3E;text-decoration:none}
 .rule{height:2px;background:#5C2E3E;margin:10px 0 2px}.rule+.rule2{height:1px;background:#C7A46A;margin:0 0 4px;width:60px}
-h2{font:600 11.5pt Serif,serif;color:#5C2E3E;margin:13px 0 6px;padding-bottom:3px;border-bottom:1px solid #E6D9DD}
+h2{font:600 11.5pt Serif,serif;color:#5C2E3E;margin:11px 0 5px;padding-bottom:3px;border-bottom:1px solid #E6D9DD}
 p{margin:0 0 4px}.job{margin:0 0 8px;break-inside:avoid}.jh{display:flex;justify-content:space-between;gap:12px}
 .jh b{font-weight:700}.jh span{color:#6E5A61;white-space:nowrap;font-size:8.6pt}.org{color:#9A7633;font-weight:600;font-size:8.8pt}
 ul{margin:3px 0 0;padding-left:14px}li{margin:1.5px 0}
