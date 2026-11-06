@@ -50,6 +50,48 @@
     "pbiEmbed": "https://app.powerbi.com/view?r=eyJrIjoiMDIwMjY0NjEtMzQwNS00NjVmLTk1MGUtMWIzNmU5MTc1NjUwIiwidCI6IjM4N2Q0NmE2LWU4NWMtNDA4Ni1iYWVjLTY1YmU0NjIwNDczMiIsImMiOjl9"
   },
   {
+    "slug": "wanderbricks-lakehouse",
+    "title": "Booking Lakehouse · Databricks Auto CDC",
+    "eyebrow": "Travel bookings / Lakeflow pipeline",
+    "category": "engineering",
+    "status": "done",
+    "kind": "original",
+    "featured": true,
+    "caseStudy": true,
+    "dashboard": false,
+    "repo": "https://github.com/lidianarhoro88/wanderbricks-lakehouse",
+    "summary": "A Lakeflow declarative pipeline on Databricks that turns 83k booking change events into a full SCD Type 2 history with Auto CDC, then reconciles payments against bookings: 2,928 cancelled bookings still held their payment and 649 were due but unpaid.",
+    "tools": [
+      "Databricks",
+      "Lakeflow",
+      "SQL",
+      "Delta Lake",
+      "Auto CDC",
+      "Asset Bundles"
+    ],
+    "visual": {
+      "type": "architecture",
+      "steps": [
+        "Change events",
+        "Bronze (streaming)",
+        "Silver + expectations",
+        "SCD Type 2",
+        "Gold"
+      ]
+    },
+    "question": "Bookings on a travel platform change state many times: pending, confirmed, completed, cancelled. The current-state table only shows where each booking ended. How long do bookings wait to be confirmed, and does the money match what each booking should hold?",
+    "approach": [
+      "Streamed the booking change log and payments into bronze streaming tables, so each run only reads new rows.",
+      "Validated events in silver with expectations: missing ids, check-out before check-in and negative amounts are dropped and counted; suspicious rows are kept and flagged.",
+      "Built a full SCD Type 2 history with AUTO CDC, sequencing by update time and update id so out-of-order events land in the right order.",
+      "Built gold materialized views for destination demand, status transitions, property performance and payment reconciliation, and packaged the pipeline, schema and a daily job as a Databricks Asset Bundle deployed from a Git folder."
+    ],
+    "result": "Of 48,000 bookings, 32,794 were paid exactly, 2,928 cancelled bookings still held their full payment, and 649 confirmed or completed bookings had no completed payment (357,330 outstanding). Pending bookings waited about six days whichever way they ended, and 3 in 10 ended cancelled. The quality rules also removed 3,726 payment rows (7.5%) with an amount of zero or less.",
+    "scope": "Wanderbricks is Databricks' sample travel booking dataset, available in every workspace. Names, e-mails and phone numbers are not carried into any table.",
+    "files": [],
+    "image": "/project-media/wanderbricks-lakehouse.webp"
+  },
+  {
     "slug": "construction-cost-control",
     "title": "Construction Cost Control · Earned Value",
     "eyebrow": "Project controls / EVM dashboard",

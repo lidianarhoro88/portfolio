@@ -17,16 +17,16 @@ const font = (fam, file, w) => `@font-face{font-family:"${fam}";src:url("file://
 
 const cvProjects = [
   ['pharma-distribution-dbt', 'dbt + DuckDB star schema for a pharma distributor: SCD Type 2 pharmacy history, 39 data tests, OTIF and expiry-loss marts. Found the European-side warehouse at 83% on time and 10 SKUs causing 45% of expiry loss.'],
+  ['wanderbricks-lakehouse', 'Lakeflow declarative pipeline on Databricks: 83k booking change events into an SCD Type 2 history with Auto CDC, expectations, and payment reconciliation that found 2,928 cancelled-but-paid and 649 unpaid bookings.'],
   ['tcmb-fx-rates-pipeline', 'Incremental, idempotent daily load of Central Bank of Türkiye FX bulletins on GitHub Actions: watermark, holiday detection, retries, quality checks, live dashboard. 205 bulletins, 0 failed days.'],
   ['construction-cost-control', 'Earned value model in DuckDB SQL for six construction projects (PV, EV, AC, CPI, SPI, EAC, TCPI) with a live dashboard; separated a cost overrun (steel, CPI 0.90) from a schedule slip (SPI 0.67).'],
   ['invoice-intake-automation', 'Python pipeline that reads Turkish supplier PDF invoices, validates them against vendor and PO master data with 14 rules and books clean ones to SQLite; 29 booked, 11 routed to review.'],
-  ['csv-data-profiler', 'pip-installable data quality tool: type inference, duplicate and label checks, quality score, offline HTML report and a CI quality gate.'],
   ['logistics-analytics-sql-powerbi', 'Layered SQL Server pipeline and Power BI report for a delivery company: on-time rate, failure rate and driver-level drill-down.'],
 ].map(([slug, line]) => ({ p: projects.find(x => x.slug === slug), line })).filter(x => x.p);
 
 const skills = [
   ['Data engineering', 'ETL/ELT pipelines, dbt, data modelling (dimensional models, SCD Type 2), Medallion architecture, incremental and idempotent loads, data quality testing'],
-  ['Databases', 'SQL Server, PostgreSQL, DuckDB, MySQL, SQLite; Databricks SQL and Apache Spark (familiar)'],
+  ['Databases', 'SQL Server, PostgreSQL, DuckDB, MySQL, SQLite; Databricks (Lakeflow declarative pipelines, Auto CDC, Delta Lake, Asset Bundles)'],
   ['Programming and tools', 'SQL, Python (pandas), Git and GitHub, GitHub Actions (CI/CD), Bash'],
   ['BI and reporting', 'Power BI (DAX, Power Query), advanced Excel, dashboard design, report automation'],
   ['Business and systems', 'SAP ERP, requirements gathering, process modelling, IT project management, data governance'],
